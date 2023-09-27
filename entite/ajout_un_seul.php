@@ -9,7 +9,7 @@
 
     $nom=$json_decode->nom; 
 
-    $description=$json_decode->description; 
+    $descriptions=$json_decode->descriptions; 
     
     $date_creation = date("Y-m-d");
 
@@ -20,15 +20,15 @@
     $heure_update = date("H:i:s");    
 
     try {
-            $dbh = new PDO('mysql:host=localhost;dbname='.$db_test, $user_test, $pass_test);
+            $dbh = new PDO('mysql:host=localhost;dbname='.$db_referenciel, $user_services, $pass_services);
 
-            $stmt = $dbh->prepare("INSERT INTO entite (application_id, nom, description, date_creation, date_update, heure_creation, heure_update) VALUES (?,?,?,?,?,?,?,?,?)");
+            $stmt = $dbh->prepare("INSERT INTO entite (application_id, nom, descriptions, date_creation, date_update, heure_creation, heure_update) VALUES (?,?,?,?,?,?,?,?,?)");
 
             $stmt->bindParam(1, $application_id);
 
             $stmt->bindParam(2, $nom);
 
-            $stmt->bindParam(3, $description);
+            $stmt->bindParam(3, $descriptions);
 
             $stmt->bindParam(4, $date_creation);
 
@@ -58,7 +58,7 @@
 
                     $data["nom"]  = "$nom";
 
-                    $data["description"]  = "$description";
+                    $data["descriptions"]  = "$descriptions";
 
                     $data["date_creation"]  = "$date_creation";
 
