@@ -4,7 +4,7 @@
         {
             $dbh = new PDO('mysql:host=localhost;dbname='.$db_referenciel, $user, $pass);
             
-            $stmt = $dbh->prepare("SELECT *FROM api WHERE id = :id");
+            $stmt = $dbh->prepare("SELECT *FROM donnee_echange WHERE id = :id");
             
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             
@@ -20,7 +20,7 @@
                         {
                             $datas["code"]  = 200;
 
-                            $datas['api'][]=$resultat;
+                            $datas['donnee_echange'][]=$resultat;
                         }
                 }
             else
