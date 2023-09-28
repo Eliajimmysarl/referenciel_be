@@ -4,18 +4,14 @@ $application_id=$json_decode->application_id;
 
 $nom=$json_decode->nom; 
 
-$description=$json_decode->description; 
-
-$date_creation = date("Y-m-d");
+$descriptions=$json_decode->descriptions; 
 
 $date_update = date("Y-m-d");
-
-$heure_creation = date("H:i:s");
 
 $heure_update = date("H:i:s");    
 
     try {
-            $dbh = new PDO('mysql:host=localhost;dbname='.$db_referenciel, $user_services, $pass_services); 
+            $dbh = new PDO('mysql:host=localhost;dbname='.$db_referenciel, $user, $pass); 
 
             $stmt = $dbh->prepare("UPDATE entite SET application_id=?, nom=?,  descriptions=?, date_update=?,  heure_update=? WHERE id=?");
 
@@ -27,9 +23,9 @@ $heure_update = date("H:i:s");
 
             $stmt->bindParam(4, $id);
 
-            $stmt->bindParam(6, $dateUpdate);
+            $stmt->bindParam(5, $date_update);
 
-            $stmt->bindParam(7, $heureUpdate);
+            $stmt->bindParam(6, $heure_update);
 
             $stmt->execute();
 
@@ -43,9 +39,9 @@ $heure_update = date("H:i:s");
 
             $stmt->bindParam(4, $id);
 
-            $stmt->bindParam(5, $dateUpdate);
+            $stmt->bindParam(5, $date_update);
 
-            $stmt->bindParam(6, $heureUpdate);
+            $stmt->bindParam(6, $heure_update);
 
             $stmt->execute();        
 

@@ -22,7 +22,7 @@
     try {
             $dbh = new PDO('mysql:host=localhost;dbname='.$db_referenciel, $user, $pass);
 
-            $stmt = $dbh->prepare("INSERT INTO entite (application_id, nom, descriptions, date_creation, date_update, heure_creation, heure_update) VALUES (?,?,?,?,?,?,?,?,?)");
+            $stmt = $dbh->prepare("INSERT INTO entite (application_id, nom, descriptions, date_creation, date_update, heure_creation, heure_update) VALUES (?,?,?,?,?,?,?)");
 
             $stmt->bindParam(1, $application_id);
 
@@ -37,6 +37,8 @@
             $stmt->bindParam(6, $heure_creation);
 
             $stmt->bindParam(7, $heure_update);
+
+            $stmt->bindParam(8, $id);
 
             $stmt->execute();
 
@@ -68,7 +70,7 @@
 
                     $data["heure_update"]  = "$heure_update";
 
-                    $data["reponse"]  = "Le test $application_id $nomt avec l'id $id est cree";  
+                    $data["reponse"]  = "Le test $application_id $nom avec l'id $id est cree";  
                 }
             
             echo json_encode( $data );
