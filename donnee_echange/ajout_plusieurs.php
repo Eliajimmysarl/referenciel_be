@@ -2,17 +2,15 @@
 
     $application_id=$json_decode->application_id;
 
-    $couche=$json_decode->couche; 
-
-    $plateforme=$json_decode->plateforme; 
+    $composant_id=$json_decode->composant_id; 
 
     $entite_id=$json_decode->entite_id; 
 
     $nom=$json_decode->nom; 
 
-    $descriptions=$json_decode->descriptions; 
+    $types=$json_decode->types; 
 
-    $url_code=$json_decode->url_code;
+    $descriptions=$json_decode->descriptions; 
 
     $date_creation = date("Y-m-d");
     
@@ -21,37 +19,33 @@
     try {
             $dbh = new PDO('mysql:host=localhost;dbname='.$db_referenciel, $user, $pass);
 
-            for($i=0; $i < count($composants); ++$i)
+            for($i=0; $i < count($donnee_echanges); ++$i)
                 {
-                    $application_id= $composants[$i][0];
+                    $application_id= $donnee_echanges[$i][0];
                
-                    $couche= $composants[$i][1];
+                    $composant_id= $donnee_echanges[$i][1];
 
-                    $plateforme= $composants[$i][2];
+                    $entite_id= $donnee_echanges[$i][2];
 
-                    $entite_id= $composants[$i][3];
+                    $nom= $donnee_echanges[$i][3];
 
-                    $nom= $composants[$i][4];
+                    $types= $donnee_echanges[$i][4];
 
-                    $descriptions= $composants[$i][5];
+                    $descriptions= $donnee_echanges[$i][5];
 
-                    $url_code= $composants[$i][6];
-
-                    $stmt = $dbh->prepare("INSERT INTO composant (application_id, couche, plateforme, entite_id, nom, descriptions, url_code, date_creation, heure_creation) VALUES (?,?,?,?,?,?,?,?,?)");
+                    $stmt = $dbh->prepare("INSERT INTO donnee_echange (application_id, composant_id,  entite_id, nom, types, descriptions, date_creation, heure_creation) VALUES (?,?,?,?,?,?,?,?)");
 
                     $stmt->bindParam(1, $application_id);
 
-                    $stmt->bindParam(2, $couche);
+                    $stmt->bindParam(2, $composant_id);
 
-                    $stmt->bindParam(3, $plateforme);
+                    $stmt->bindParam(3, $entite_id);
 
-                    $stmt->bindParam(4, $entite_id);
+                    $stmt->bindParam(4, $nom);
 
-                    $stmt->bindParam(5, $nom);
+                    $stmt->bindParam(5, $types);
 
                     $stmt->bindParam(6, $descriptions);
-
-                    $stmt->bindParam(7, $url_code);
 
                     $stmt->execute();
                 }
