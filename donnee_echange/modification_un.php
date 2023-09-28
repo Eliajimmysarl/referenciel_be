@@ -1,71 +1,59 @@
 <?php
 
-    $texte=$json_decode->texte;
+    $application_id=$json_decode->application_id;
 
-    $selec=$json_decode->selec;
+    $entite_id=$json_decode->entite_id; 
 
-    $dates=$json_decode->dates;
+    $composant_id=$json_decode->composant_id; 
 
-    $telephone=$json_decode->telephone;
+    $methode=$json_decode->methode; 
 
-    $email=$json_decode->email; 
+    $uri=$json_decode->uri; 
 
-    $passwords=$json_decode->passwords;
-
-    $optionsRadios=$json_decode->optionsRadios; 
-
-    $dateUpdate = date("Y-m-d");
+    $date_update = date("Y-m-d");
     
-    $heureUpdate = date("H:i:s");
+    $heure_update = date("H:i:s");
 
     try {
-            $dbh = new PDO('mysql:host=localhost;dbname='.$db_test, $user_test, $pass_test);
+            $dbh = new PDO('mysql:host=localhost;dbname='.$db_referenciel, $user, $pass);
 
-            $stmt = $dbh->prepare("UPDATE test SET texte=?, selec=?,  dates=?, telephone=?, email=?, passwords=?, optionsRadios=?, date_update=?,  heure_update=? WHERE id=?");
+            $stmt = $dbh->prepare("UPDATE api SET application_id=?, entite_id=?,  composant_id=?, methode=?, uri=? date_update=?,  heure_update=? WHERE id=?");
 
-            $stmt->bindParam(1, $texte);
+            $stmt->bindParam(1, $application_id);
 
-            $stmt->bindParam(2, $selec);
+            $stmt->bindParam(2, $entite_id);
 
-            $stmt->bindParam(3, $dates);
+            $stmt->bindParam(3, $composant_id);
 
-            $stmt->bindParam(4, $telephone);
+            $stmt->bindParam(4, $methode);
 
-            $stmt->bindParam(5, $email);
+            $stmt->bindParam(5, $uri);
 
-            $stmt->bindParam(6, $passwords);
-            
-            $stmt->bindParam(7, $optionsRadios);
+            $stmt->bindParam(6, $id);
 
-            $stmt->bindParam(8, $id);
+            $stmt->bindParam(7, $date_update);
 
-            $stmt->bindParam(8, $dateUpdate);
-
-            $stmt->bindParam(9, $heureUpdate);
+            $stmt->bindParam(8, $heure_update);
 
             $stmt->execute();
 
-            $stmt = $dbh->prepare("SELECT *FROM test WHERE texte=? AND selec=? AND  dates=? AND telephone=? AND email=? AND passwords=? AND optionsRadios=? AND date_update=? AND  heure_update=?");
+            $stmt = $dbh->prepare("SELECT *FROM api WHERE application_id=? AND entite_id=? AND  composant_id=? AND methode_id=? AND uri=? AND date_update=? AND  heure_update=?");
             
-            $stmt->bindParam(1, $texte);
+            $stmt->bindParam(1, $application_id);
 
-            $stmt->bindParam(2, $selec);
+            $stmt->bindParam(2, $entite_id);
 
-            $stmt->bindParam(3, $dates);
+            $stmt->bindParam(3, $composant_id);
 
-            $stmt->bindParam(4, $telephone);
+            $stmt->bindParam(4, $methode);
 
-            $stmt->bindParam(5, $email);
+            $stmt->bindParam(5, $uri);
 
-            $stmt->bindParam(6, $passwords);
-            
-            $stmt->bindParam(7, $optionsRadios);
+            $stmt->bindParam(6, $id);
 
-            $stmt->bindParam(8, $id);
+            $stmt->bindParam(7, $date_update);
 
-            $stmt->bindParam(8, $dateUpdate);
-
-            $stmt->bindParam(9, $heureUpdate);
+            $stmt->bindParam(8, $heure_update);
 
             $stmt->execute();        
 
@@ -73,19 +61,19 @@
 
             $data["id"]  = "$last";
 
-            $data["texte"]  = "$texte";
+            $data["application_id"]  = "$application_id";
 
-            $data["selec"]  = "$selec";
+            $data["entite_id"]  = "$entite_id";
 
-            $data["dates"]  = "$dates";
+            $data["composant_id"]  = "$composant_id";
 
-            $data["telephone"]  = "$telephone";
+            $data["methode"]  = "$methode";
 
-            $data["email"]  = "$email";
+            $data["uri"]  = "$uri";
 
-            $data["passwords"]  = "$passwords";
+            $data["date_update"]  = "$date_update";
             
-            $data["optionsRadios"]  = "$optionsRadios";
+            $data["heure_update"]  = "$heure_update";
 
             echo json_encode( $data );
             
@@ -99,4 +87,4 @@
             die();
 
         }
-?>  
+?>    
