@@ -1,45 +1,76 @@
 <?php
 
-    $texte=$json_decode->texte;
+    $myjson=file_get_contents('php://input');
 
-    $selec=$json_decode->selec; 
+    $json_decode= json_decode($myjson);
 
-    $dates=$json_decode->dates; 
+    $nom=$json_decode->nom;
 
-    $telephone=$json_decode->telephone; 
+    $descriptions=$json_decode->descriptions; 
 
-    $email=$json_decode->email; 
+    $lien_web=$json_decode->lien_web; 
 
-    $passwords=$json_decode->passwords; 
-
-    $optionsRadios=$json_decode->optionsRadios;
-
-    $dateCreation = date("Y-m-d");
+    $lien_android=$json_decode->lien_android; 
     
-    $heureCreation = date("H:i:s");
+    $lien_ios=$json_decode->lien_ios; 
 
+    $ussd_vodacom=$json_decode->ussd_vodacom; 
+
+    $ussd_africell=$json_decode->ussd_africell;
+
+    $ussd_orange=$json_decode->ussd_orange;
+
+    $date_creation = date("Y-m-d");
+
+    $date_update = date("Y-m-d");
+    
+    $heure_creation = date("H:i:s");
+
+    $heure_update = date("H:i:s");    
+
+    id 
+    nom
+    description
+    lien_web
+    lien_android
+    lien_ios
+    ussd_vodacom
+    ussd_africell
+    ussd_orange
+    date_creation
+    date_update
+    heure_creation
+    heure_update
+    
     try {
             $dbh = new PDO('mysql:host=localhost;dbname='.$db_test, $user_test, $pass_test);
 
-            $stmt = $dbh->prepare("INSERT INTO test (texte, selec, dates, telephone, email, passwords, optionsRadios,  date_creation, heure_creation) VALUES (?,?,?,?,?,?,?,?,?)");
+            $stmt = $dbh->prepare("INSERT INTO applications ( nom, descriptions, lien_web, lien_android, lien_ios, ussd_vodacom, ussd_africell, ussd_orange, date_creation, date_update, heure_creation, heure_update ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
 
-            $stmt->bindParam(1, $texte);
+            $stmt->bindParam(1, $nom);
 
-            $stmt->bindParam(2, $selec);
+            $stmt->bindParam(2, $descriptions);
 
-            $stmt->bindParam(3, $dates);
+            $stmt->bindParam(3, $lien_web);
 
-            $stmt->bindParam(4, $telephone);
+            $stmt->bindParam(4, $lien_android);
 
-            $stmt->bindParam(5, $email);
+            $stmt->bindParam(5, $lien_ios);
 
-            $stmt->bindParam(6, $passwords);
+            $stmt->bindParam(6, $ussd_vodacom);
 
-            $stmt->bindParam(7, $optionsRadios);
+            $stmt->bindParam(7, $ussd_africell);
 
-            $stmt->bindParam(8, $dateCreation);
-             
-            $stmt->bindParam(9, $heureCreation);
+            $stmt->bindParam(7, $ussd_orange);
+
+            $stmt->bindParam(4, $date_creation);
+
+            $stmt->bindParam(5, $date_update);
+
+            $stmt->bindParam(6, $heure_creation);
+
+            $stmt->bindParam(7, $heure_update);
+
 
             $stmt->execute();
 
@@ -57,19 +88,31 @@
 
                     $data["id"]  = "$last";
 
-                    $data["text"]  = "$texte";
+                    $data["nom"]  = "$nom";
 
-                    $data["select"]  = "$selec";
+                    $data["descriptions"]  = "$descriptions";
 
-                    $data["email"]  = "$email";
+                    $data["lien_web"]  = "$lien_web";
 
-                    $data["dates"]  = "$dates";
+                    $data["lien_android"]  = "$lien_android";
 
-                    $data["telephone"]  = "$telephone";
+                    $data["lien_ios"]  = "$lien_ios";
 
-                    $data["optionsRadios"]  = "$optionsRadios";
+                    $data["ussd_vodacom"]  = "$ussd_vodacom";
 
-                    $data["reponse"]  = "Le test $text $select avec l'id $id est cree";  
+                    $data["ussd_africell"]  = "$ussd_africell";
+
+                    $data["ussd_orange"]  = "$ussd_orange";
+
+                    $data["date_creation"]  = "$date_creation";
+
+                    $data["date_update"]  = "$date_update";
+
+                    $data["heure_creation"]  = "$heure_creation";
+
+                    $data["heure_update"]  = "$heure_update";
+
+                    $data["reponse"]  = "Le test $nom $descriptions avec l'id $id est cree";  
                 }
             
             echo json_encode( $data );
