@@ -56,6 +56,26 @@
                 {
                     $data["code"]  = 400;
 
+                    $data["id"]  = "$last";
+
+                    $data["application_id"]  = "$application_id";
+
+                    $data["entite_id"]  = "$entite_id";
+
+                    $data["composant_id"]  = "$composant_id";
+  
+                    $data["methode"]  = "$methode";
+
+                    $data["uri"]  = "$uri";
+
+                    $data["date_creation"]  = "$date_creation";
+
+                    $data["date_update"]  = "$date_update";
+
+                    $data["heure_creation"]  = "$heure_creation";
+
+                    $data["heure_update"]  = "$heure_update";
+
                     $data["message"]  = "Ressource not created";
                 }
             else
