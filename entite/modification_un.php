@@ -11,7 +11,7 @@ $date_update = date("Y-m-d");
 $heure_update = date("H:i:s");    
 
     try {
-            $dbh = new PDO('mysql:host=localhost;dbname='.$db_referenciel, $user, $pass); 
+            $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass); 
 
             $stmt = $dbh->prepare("UPDATE entite SET application_id=?, nom=?,  descriptions=?, date_update=?,  heure_update=? WHERE id=?");
 

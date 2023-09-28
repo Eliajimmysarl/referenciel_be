@@ -2,7 +2,7 @@
 
     try {
     
-            $dbh = new PDO('mysql:host=localhost;dbname='.$db_referenciel, $user, $pass);
+            $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
 
             $stmt = $dbh->prepare("DELETE FROM donnee_echange WHERE id = :id");
 

@@ -17,7 +17,7 @@
     $heure_creation = date("H:i:s");
 
     try {
-            $dbh = new PDO('mysql:host=localhost;dbname='.$db_referenciel, $user, $pass);
+            $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
 
             for($i=0; $i < count($donnee_echanges); ++$i)
                 {
