@@ -1,9 +1,9 @@
 <?php
 
     try {
-            $dbh = new PDO('mysql:host=localhost;dbname='.$db_test, $user_test, $pass_test);
+            $dbh = new PDO('mysql:host=localhost;dbname='.$db_referenciel, $user, $pass);
 
-            $stmt = $dbh->prepare("SELECT *FROM test   ORDER BY id");
+            $stmt = $dbh->prepare("SELECT *FROM donnee_echange   ORDER BY id");
 
             $stmt->execute();
 
@@ -17,7 +17,7 @@
                         {
                             $datas["code"]  = 200;
                             
-                            $datas['entite'][]=$resultat;
+                            $datas['donnee_echange'][]=$resultat;
                         }
                 }
             else
@@ -33,4 +33,5 @@
                 print "Erreur !: " . $e->getMessage() . "<br/>";
                 die();
     }
+    
 ?> 

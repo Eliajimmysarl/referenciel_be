@@ -2,15 +2,15 @@
 
     try {
     
-            $dbh = new PDO('mysql:host=localhost;dbname='.$db_test, $user_test, $pass_test);
+            $dbh = new PDO('mysql:host=localhost;dbname='.$db_referenciel, $user, $pass);
 
-            $stmt = $dbh->prepare("DELETE FROM test WHERE id = :id");
+            $stmt = $dbh->prepare("DELETE FROM donnee_echange WHERE id = :id");
 
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
             $stmt->execute();
 
-            $stmt = $dbh->prepare("SELECT *FROM test  ORDER BY id");
+            $stmt = $dbh->prepare("SELECT *FROM donnee_echange  ORDER BY id");
                     
             $stmt->execute();
                     
@@ -20,7 +20,7 @@
                         {
                             $datas["code"]  = 200;
 
-                            $datas['test'][]=$resultat;
+                            $datas['donnee_echange'][]=$resultat;
                         }
                                 
             echo json_encode( $datas);
@@ -33,5 +33,5 @@
 
             die();
         }
-           
+             
 ?>

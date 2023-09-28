@@ -2,9 +2,9 @@
 
     try 
         {
-            $dbh = new PDO('mysql:host=localhost;dbname='.$db_test, $user_test, $pass_test);
+            $dbh = new PDO('mysql:host=localhost;dbname='.$db_referenciel, $user, $pass);
             
-            $stmt = $dbh->prepare("SELECT *FROM test WHERE id = :id");
+            $stmt = $dbh->prepare("SELECT *FROM donnee_echange WHERE id = :id");
             
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             
@@ -20,7 +20,7 @@
                         {
                             $datas["code"]  = 200;
 
-                            $datas['test'][]=$resultat;
+                            $datas['donnee_echange'][]=$resultat;
                         }
                 }
             else
