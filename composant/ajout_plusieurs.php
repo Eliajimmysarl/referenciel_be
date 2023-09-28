@@ -2,28 +2,44 @@
 
     $textes=$json_decode->text;
 
-    $dateCreation = date("Y-m-d");
+    $date_creation = date("Y-m-d");
     
-    $heureCreation = date("H:i:s");
+    $heure_creation = date("H:i:s");
 
     try {
-            $dbh = new PDO('mysql:host=localhost;dbname='.$db_test, $user_test, $pass_test);
+            $dbh = new PDO('mysql:host=localhost;dbname='.$db_referenciel, $user, $pass);
 
-            for($i=0; $i < count($textes); ++$i)
+            for($i=0; $i < count($composants); ++$i)
                 {
-                    $text = $textes[$i][0];
+                    $application_id= $composants[$i][0];
                
-                    $select = $textes[$i][1];
+                    $couche= $composants[$i][1];
 
-                    $stmt = $dbh->prepare("INSERT INTO test (texte, selec, , date_creation, heure_creation) VALUES (?,?,?,?)");
+                    $plateforme= $composants[$i][2];
 
-                    $stmt->bindParam(1, $text);
-        
-                    $stmt->bindParam(2, $select);
-                    
-                    $stmt->bindParam(3, $dateCreation);
-             
-                    $stmt->bindParam(4, $heureCreation);
+                    $entite_id= $composants[$i][3];
+
+                    $nom= $composants[$i][4];
+
+                    $descriptions= $composants[$i][5];
+
+                    $url_code= $composants[$i][6];
+
+                    $stmt = $dbh->prepare("INSERT INTO composant (application_id, couche, plateforme, entite_id, nom, descriptions, url_code, date_creation, heure_creation) VALUES (?,?,?,?,?,?,?,?,?)");
+
+                    $stmt->bindParam(1, $application_id);
+
+                    $stmt->bindParam(2, $couche);
+
+                    $stmt->bindParam(3, $plateforme);
+
+                    $stmt->bindParam(4, $entite_id);
+
+                    $stmt->bindParam(5, $nom);
+
+                    $stmt->bindParam(6, $descriptions);
+
+                    $stmt->bindParam(7, $url_code);
 
                     $stmt->execute();
                 }
