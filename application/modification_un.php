@@ -1,71 +1,78 @@
 <?php
 
-    $texte=$json_decode->texte;
+$nom=$json_decode->nom;
 
-    $selec=$json_decode->selec;
+$descriptions=$json_decode->descriptions; 
 
-    $dates=$json_decode->dates;
+$lien_web=$json_decode->lien_web; 
 
-    $telephone=$json_decode->telephone;
+$lien_android=$json_decode->lien_android; 
 
-    $email=$json_decode->email; 
+$lien_ios=$json_decode->lien_ios; 
 
-    $passwords=$json_decode->passwords;
+$ussd_vodacom=$json_decode->ussd_vodacom; 
 
-    $optionsRadios=$json_decode->optionsRadios; 
+$ussd_africell=$json_decode->ussd_africell;
 
-    $dateUpdate = date("Y-m-d");
-    
-    $heureUpdate = date("H:i:s");
+$ussd_orange=$json_decode->ussd_orange;
+
+$date_update = date("Y-m-d");
+
+$heure_update = date("H:i:s");    
 
     try {
-            $dbh = new PDO('mysql:host=localhost;dbname='.$db_test, $user_test, $pass_test);
+            $dbh = new PDO('mysql:host=localhost;dbname='.$db_referenciel, $user, $pass);
 
-            $stmt = $dbh->prepare("UPDATE test SET texte=?, selec=?,  dates=?, telephone=?, email=?, passwords=?, optionsRadios=?, date_update=?,  heure_update=? WHERE id=?");
+            $stmt = $dbh->prepare("UPDATE applications SET nom=?, descriptions=?,  lien_web=?, lien_android=?, lien_ios=?, ussd_vodacom=?, ussd_africell=?, ussd_orange=?, date_update=?,  heure_update=? WHERE id=?");
 
-            $stmt->bindParam(1, $texte);
+            $stmt->bindParam(1, $nom);
 
-            $stmt->bindParam(2, $selec);
+            $stmt->bindParam(2, $descriptions);
 
-            $stmt->bindParam(3, $dates);
+            $stmt->bindParam(3, $lien_web);
 
-            $stmt->bindParam(4, $telephone);
+            $stmt->bindParam(4, $lien_android);
 
-            $stmt->bindParam(5, $email);
+            $stmt->bindParam(5, $lien_ios);
 
-            $stmt->bindParam(6, $passwords);
+            $stmt->bindParam(6, $ussd_vodacom);
             
-            $stmt->bindParam(7, $optionsRadios);
+            $stmt->bindParam(7, $ussd_africell);
 
-            $stmt->bindParam(8, $id);
+            $stmt->bindParam(8, $ussd_orange);
 
-            $stmt->bindParam(8, $dateUpdate);
+            $stmt->bindParam(9, $id);
 
-            $stmt->bindParam(9, $heureUpdate);
+            $stmt->bindParam(10, $dateUpdate);
+
+            $stmt->bindParam(11, $heureUpdate);
 
             $stmt->execute();
 
-            $stmt = $dbh->prepare("SELECT *FROM test WHERE texte=? AND selec=? AND  dates=? AND telephone=? AND email=? AND passwords=? AND optionsRadios=? AND date_update=? AND  heure_update=?");
+            $stmt = $dbh->prepare("SELECT *FROM applications WHERE nom=? AND descriptions=? AND lien_web=? AND lien_android=? AND lien_ios=? AND ussd_vodacom=? AND ussd_africell=? AND ussd_orange=?  AND date_update=? AND  heure_update=?");
             
-            $stmt->bindParam(1, $texte);
+            $stmt->bindParam(1, $nom);
 
-            $stmt->bindParam(2, $selec);
+            $stmt->bindParam(2, $descriptions);
 
-            $stmt->bindParam(3, $dates);
+            $stmt->bindParam(3, $lien_web);
 
-            $stmt->bindParam(4, $telephone);
+            $stmt->bindParam(4, $lien_android);
 
-            $stmt->bindParam(5, $email);
+            $stmt->bindParam(5, $lien_ios);
 
-            $stmt->bindParam(6, $passwords);
+            $stmt->bindParam(6, $ussd_vodacom);
             
-            $stmt->bindParam(7, $optionsRadios);
+            $stmt->bindParam(7, $ussd_africell);
 
-            $stmt->bindParam(8, $id);
+            $stmt->bindParam(8, $ussd_orange);
 
-            $stmt->bindParam(8, $dateUpdate);
+            $stmt->bindParam(9, $id);
 
-            $stmt->bindParam(9, $heureUpdate);
+            $stmt->bindParam(10, $dateUpdate);
+
+            $stmt->bindParam(11, $heureUpdate);
+
 
             $stmt->execute();        
 
@@ -73,19 +80,29 @@
 
             $data["id"]  = "$last";
 
-            $data["texte"]  = "$texte";
+            $data["nom"]  = "$nom";
 
-            $data["selec"]  = "$selec";
+                    $data["descriptions"]  = "$descriptions";
 
-            $data["dates"]  = "$dates";
+                    $data["lien_web"]  = "$lien_web";
 
-            $data["telephone"]  = "$telephone";
+                    $data["lien_android"]  = "$lien_android";
 
-            $data["email"]  = "$email";
+                    $data["lien_ios"]  = "$lien_ios";
 
-            $data["passwords"]  = "$passwords";
-            
-            $data["optionsRadios"]  = "$optionsRadios";
+                    $data["ussd_vodacom"]  = "$ussd_vodacom";
+
+                    $data["ussd_africell"]  = "$ussd_africell";
+
+                    $data["ussd_orange"]  = "$ussd_orange";
+
+                    $data["date_creation"]  = "$date_creation";
+
+                    $data["date_update"]  = "$date_update";
+
+                    $data["heure_creation"]  = "$heure_creation";
+
+                    $data["heure_update"]  = "$heure_update";
 
             echo json_encode( $data );
             
