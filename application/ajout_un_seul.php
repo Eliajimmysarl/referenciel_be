@@ -45,17 +45,19 @@
 
             $stmt->bindParam(6, $ussd_vodacom);
 
-            $stmt->bindParam(7, $ussd_africell);
+            $stmt->bindParam(6, $ussd_africell);
 
             $stmt->bindParam(7, $ussd_orange);
 
-            $stmt->bindParam(4, $date_creation);
+            $stmt->bindParam(8, $date_creation);
 
-            $stmt->bindParam(5, $date_update);
+            $stmt->bindParam(9, $id);
 
-            $stmt->bindParam(6, $heure_creation);
+            $stmt->bindParam(10, $date_update);
 
-            $stmt->bindParam(7, $heure_update);
+            $stmt->bindParam(11, $heure_creation);
+
+            $stmt->bindParam(12, $heure_update);
 
 
             $stmt->execute();

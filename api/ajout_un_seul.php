@@ -38,13 +38,15 @@
 
             $stmt->bindParam(5, $uri);
 
-            $stmt->bindParam(4, $date_creation);
+            $stmt->bindParam(6, $id);
 
-            $stmt->bindParam(5, $date_update);
+            $stmt->bindParam(7, $date_creation);
 
-            $stmt->bindParam(6, $heure_creation);
+            $stmt->bindParam(8, $date_update);
 
-            $stmt->bindParam(7, $heure_update);
+            $stmt->bindParam(9, $heure_creation);
+
+            $stmt->bindParam(10, $heure_update);
 
            
 

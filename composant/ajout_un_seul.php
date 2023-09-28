@@ -1,45 +1,60 @@
 <?php
 
-    $texte=$json_decode->texte;
+    $myjson=file_get_contents('php://input');
 
-    $selec=$json_decode->selec; 
+    $json_decode= json_decode($myjson);
 
-    $dates=$json_decode->dates; 
+    $application_id=$json_decode->application_id;
 
-    $telephone=$json_decode->telephone; 
+    $couche=$json_decode->couche; 
 
-    $email=$json_decode->email; 
+    $plateforme=$json_decode->plateforme; 
 
-    $passwords=$json_decode->passwords; 
+    $entite_id=$json_decode->entite_id; 
 
-    $optionsRadios=$json_decode->optionsRadios;
+    $nom=$json_decode->nom; 
 
-    $dateCreation = date("Y-m-d");
+    $descriptions=$json_decode->descriptions; 
+
+    $url_code=$json_decode->url_code;
+
+    $date_creation = date("Y-m-d");
+
+    $date_update = date("Y-m-d");
     
-    $heureCreation = date("H:i:s");
+    $heure_creation = date("H:i:s");
+
+    $heure_update = date("H:i:s");  
 
     try {
-            $dbh = new PDO('mysql:host=localhost;dbname='.$db_test, $user_test, $pass_test);
+            $dbh = new PDO('mysql:host=localhost;dbname='.$db_referenciel, $user, $pass);
 
-            $stmt = $dbh->prepare("INSERT INTO test (texte, selec, dates, telephone, email, passwords, optionsRadios,  date_creation, heure_creation) VALUES (?,?,?,?,?,?,?,?,?)");
+            $stmt = $dbh->prepare("INSERT INTO composant (application_id, couche, plateforme, entite_id, nom, descriptions, url_code, date_creation, date_update, heure_creation, heure_update) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
 
-            $stmt->bindParam(1, $texte);
+            $stmt->bindParam(1, $application_id);
 
-            $stmt->bindParam(2, $selec);
+            $stmt->bindParam(2, $couche);
 
-            $stmt->bindParam(3, $dates);
+            $stmt->bindParam(3, $plateforme);
 
-            $stmt->bindParam(4, $telephone);
+            $stmt->bindParam(4, $entite_id);
 
-            $stmt->bindParam(5, $email);
+            $stmt->bindParam(5, $nom);
 
-            $stmt->bindParam(6, $passwords);
+            $stmt->bindParam(6, $descriptions);
 
-            $stmt->bindParam(7, $optionsRadios);
+            $stmt->bindParam(7, $url_code);
 
-            $stmt->bindParam(8, $dateCreation);
-             
-            $stmt->bindParam(9, $heureCreation);
+            $stmt->bindParam(8, $id);
+
+            $stmt->bindParam(9, $date_creation);
+
+            $stmt->bindParam(10, $date_update);
+
+            $stmt->bindParam(11, $heure_creation);
+
+            $stmt->bindParam(12, $heure_update);
+
 
             $stmt->execute();
 
@@ -57,19 +72,21 @@
 
                     $data["id"]  = "$last";
 
-                    $data["text"]  = "$texte";
+                    $data["application_id"]  = "$application_id";
 
-                    $data["select"]  = "$selec";
+                    $data["couche"]  = "$couche";
 
-                    $data["email"]  = "$email";
+                    $data["plateforme"]  = "$plateforme";
 
-                    $data["dates"]  = "$dates";
+                    $data["entite_id"]  = "$entite_id";
 
-                    $data["telephone"]  = "$telephone";
+                    $data["nom"]  = "$nom";
 
-                    $data["optionsRadios"]  = "$optionsRadios";
+                    $data["descriptions"]  = "$descriptions";
 
-                    $data["reponse"]  = "Le test $text $select avec l'id $id est cree";  
+                    $data["url_code"]  = "$url_code";
+
+                    $data["reponse"]  = "Le test $application_id $nom avec l'id $id est cree";  
                 }
             
             echo json_encode( $data );
