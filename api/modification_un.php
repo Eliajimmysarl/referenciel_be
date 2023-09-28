@@ -15,7 +15,7 @@
     $heure_update = date("H:i:s");
 
     try {
-            $dbh = new PDO('mysql:host=localhost;dbname='.$db_referenciel, $user, $pass);
+            $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
 
             $stmt = $dbh->prepare("UPDATE api SET application_id=?, entite_id=?,  composant_id=?, methode=?, uri=? date_update=?,  heure_update=? WHERE id=?");
 

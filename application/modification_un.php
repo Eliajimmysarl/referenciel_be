@@ -21,7 +21,7 @@ $date_update = date("Y-m-d");
 $heure_update = date("H:i:s");    
 
     try {
-            $dbh = new PDO('mysql:host=localhost;dbname='.$db_referenciel, $user, $pass);
+            $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
 
             $stmt = $dbh->prepare("UPDATE applications SET nom=?, descriptions=?,  lien_web=?, lien_android=?, lien_ios=?, ussd_vodacom=?, ussd_africell=?, ussd_orange=?, date_update=?,  heure_update=? WHERE id=?");
 

@@ -24,7 +24,7 @@
     
 
     try {
-            $dbh = new PDO('mysql:host=localhost;dbname='.$db_referenciel, $user, $pass);
+            $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
 
             $stmt = $dbh->prepare("INSERT INTO api (application_id, entite_id, composant_id, methode, uri, date_creation, date_update, heure_creation, heure_update) VALUES (?,?,?,?,?,?,?,?,?)");
 

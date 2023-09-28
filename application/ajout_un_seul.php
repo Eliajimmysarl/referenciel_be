@@ -29,7 +29,7 @@
     $heure_update = date("H:i:s");    
     
     try {
-            $dbh = new PDO('mysql:host=localhost;dbname='.$db_referenciel, $user, $pass);
+            $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
 
             $stmt = $dbh->prepare("INSERT INTO applications ( nom, descriptions, lien_web, lien_android, lien_ios, ussd_vodacom, ussd_africell, ussd_orange, date_creation, date_update, heure_creation, heure_update ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
 

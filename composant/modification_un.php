@@ -1,25 +1,27 @@
 <?php
 
-    $texte=$json_decode->texte;
+$application_id=$json_decode->application_id;
 
-    $selec=$json_decode->selec;
+$couche=$json_decode->couche; 
 
-    $dates=$json_decode->dates;
+$plateforme=$json_decode->plateforme; 
 
-    $telephone=$json_decode->telephone;
+$entite_id=$json_decode->entite_id; 
 
-    $email=$json_decode->email; 
+$nom=$json_decode->nom; 
 
-    $passwords=$json_decode->passwords;
+$descriptions=$json_decode->descriptions; 
 
-    $optionsRadios=$json_decode->optionsRadios; 
+$url_code=$json_decode->url_code;
 
-    $dateUpdate = date("Y-m-d");
+$date_update = date("Y-m-d");
+
+$heure_update = date("H:i:s");  
+
     
-    $heureUpdate = date("H:i:s");
 
     try {
-            $dbh = new PDO('mysql:host=localhost;dbname='.$db_test, $user_test, $pass_test);
+            $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
 
             $stmt = $dbh->prepare("UPDATE test SET texte=?, selec=?,  dates=?, telephone=?, email=?, passwords=?, optionsRadios=?, date_update=?,  heure_update=? WHERE id=?");
 
