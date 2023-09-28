@@ -4,13 +4,13 @@
     
             $dbh = new PDO('mysql:host=localhost;dbname='.$db_referenciel, $user, $pass);
 
-            $stmt = $dbh->prepare("DELETE FROM api WHERE id = :id");
+            $stmt = $dbh->prepare("DELETE FROM donnee_echange WHERE id = :id");
 
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
             $stmt->execute();
 
-            $stmt = $dbh->prepare("SELECT *FROM api  ORDER BY id");
+            $stmt = $dbh->prepare("SELECT *FROM donnee_echange  ORDER BY id");
                     
             $stmt->execute();
                     
@@ -20,7 +20,7 @@
                         {
                             $datas["code"]  = 200;
 
-                            $datas['api'][]=$resultat;
+                            $datas['donnee_echange'][]=$resultat;
                         }
                                 
             echo json_encode( $datas);
