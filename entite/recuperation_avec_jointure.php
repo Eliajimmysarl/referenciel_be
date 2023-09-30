@@ -1,18 +1,18 @@
 <?php
 
-   $selec=$json_decode->selec;
+   $application_id=$json_decode->application_id;
 
-   $optionsRadios=$json_decode->optionsRadios;
+   $nom=$json_decode->nom; 
+
+   $descriptions=$json_decode->descriptions;
 
    try
       {
-         $dbh = new PDO('mysql:host=localhost;dbname='.$db, $user, $pass);
+         $dbh = new PDO('mysql:host=localhost;dbname='.$db_referenciel, $user, $pass);
 
-         $stmt = $dbh->prepare("SELECT test.id, test.telephone, test.select, test.dates, test.email, test.optionsRadios, selections.id, selections.nom, options.id, options.nom FROM `test` INNER JOIN selections ON test.selec=selections.id INNER JOIN options ON test.selec=options.id WHERE test.selec= ? AND test.optionsRadios= ? ");
+         $stmt = $dbh->prepare("SELECT entite.id, entite.nom, entite.application_id, applications.id, applications.nom FROM `entite` INNER JOIN applications ON entite.application_id=applications.id  WHERE entite.application_id= ? ");
 
-         $stmt->bindParam(1, $selec);
-                     
-         $stmt->bindParam(2, $optionsRadios);
+         $stmt->bindParam(1, $application_id);
 
          $stmt->execute();
 
@@ -26,7 +26,7 @@
                   {
                      $datas["code"]  = 200;
 
-                     $datas['test'][]=$resultat;
+                     $datas['entite'][]=$resultat;
                   }
             }
          else
