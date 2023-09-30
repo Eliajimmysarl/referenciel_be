@@ -51,13 +51,11 @@
 
             $stmt->bindParam(8, $date_creation);
 
-            $stmt->bindParam(9, $id);
+            $stmt->bindParam(9, $date_update);
 
-            $stmt->bindParam(10, $date_update);
+            $stmt->bindParam(10, $heure_creation);
 
-            $stmt->bindParam(11, $heure_creation);
-
-            $stmt->bindParam(12, $heure_update);
+            $stmt->bindParam(11, $heure_update);
 
 
             $stmt->execute();

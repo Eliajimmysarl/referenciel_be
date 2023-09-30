@@ -1,8 +1,8 @@
 <?php
-    include('../../connect/connect.php');
+    include('../../../connect/connect.php');
 
-    include('../../module/curl.php');
-
+    include('../../../module/curl.php');
+  
     $headers = apache_request_headers();
     
     $token=$headers['Authorisation'];
