@@ -34,7 +34,7 @@
     
 
     try {
-            $dbh = new PDO('mysql:host=localhost;dbname='.$db_referenciel, $user, $pass);
+            $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
 
             $stmt = $dbh->prepare("INSERT INTO donnee_persistante (application_id, entite_id, nom, types, taille, defaut, valeur, indexe, cle_primaire, descriptions, date_creation, date_update, heure_creation, heure_update) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
