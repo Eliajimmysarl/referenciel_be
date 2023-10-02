@@ -2,10 +2,7 @@ Options +FollowSymlinks
 
 RewriteEngine On
 
-RewriteRule ^entites/([0-9]+)$ /entites/index.php?id=$1 [L]
+RewriteRule ^referentiel/application/([0-9]+)$ /referentiel/application/index.php?id=$1 [L]
 
-RewriteRule ^entites/plusieurs/$ /entites/index.php?plusieurs=oui [L]
 
-RewriteRule ^entites/excel/$ /entites/index.php?excel=oui [L]
 
-RewriteRule ^entites/image/$ /entites/index.php?image=oui [L]
