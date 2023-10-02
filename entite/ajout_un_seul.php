@@ -22,7 +22,7 @@
     try {
             $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
 
-            $stmt = $dbh->prepare("INSERT INTO entite (application_id, nom, descriptions, date_creation, date_update, heure_creation, heure_update) VALUES (?,?,?,?,?,?,?)");
+            $stmt = $dbh->prepare("INSERT INTO donnee_persistante (application_id, nom, descriptions, date_creation, date_update, heure_creation, heure_update) VALUES (?,?,?,?,?,?,?)");
 
             $stmt->bindParam(1, $application_id);
 
