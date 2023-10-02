@@ -67,6 +67,29 @@
                     $data["code"]  = 400;
 
                     $data["message"]  = "Ressource not created";
+                    $data["nom"]  = "$nom";
+
+                    $data["descriptions"]  = "$descriptions";
+
+                    $data["lien_web"]  = "$lien_web";
+
+                    $data["lien_android"]  = "$lien_android";
+
+                    $data["lien_ios"]  = "$lien_ios";
+
+                    $data["ussd_vodacom"]  = "$ussd_vodacom";
+
+                    $data["ussd_africell"]  = "$ussd_africell";
+
+                    $data["ussd_orange"]  = "$ussd_orange";
+
+                    $data["date_creation"]  = "$date_creation";
+
+                    $data["date_update"]  = "$date_update";
+
+                    $data["heure_creation"]  = "$heure_creation";
+
+                    $data["heure_update"]  = "$heure_update";
                 }
             else
                 {
