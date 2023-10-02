@@ -2,7 +2,17 @@ Options +FollowSymlinks
 
 RewriteEngine On
 
-RewriteRule ^referentiel/application/([0-9]+)$ /referentiel/application/index.php?id=$1 [L]
+RewriteRule ^application/([0-9]+)$ application/index.php?id=$1 [L]
+
+RewriteRule ^api/([0-9]+)$ api/index.php?id=$1 [L]
+
+RewriteRule ^composant/([0-9]+)$ composant/index.php?id=$1 [L]
+
+RewriteRule ^entite/([0-9]+)$ entite/index.php?id=$1 [L]
+
+RewriteRule ^donnee_echange/([0-9]+)$ donnee_echange/index.php?id=$1 [L]
+
+RewriteRule ^donnee_persistante/([0-9]+)$ donnee_persistante/index.php?id=$1 [L]
 
 
 
