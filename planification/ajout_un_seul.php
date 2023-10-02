@@ -54,6 +54,16 @@
                 {
                     $data["code"]  = 400;
 
+                    $data["user_id"]  = "$userId";
+
+                    $data["composant_id"]  = "$composantId";
+
+                    $data["date_debut"]  = "$dateDebut";
+
+                    $data["date_fin"]  = "$dateFin";
+
+                    $data["remarque"]  = "$remarque";
+
                     $data["message"]  = "Ressource not created";
                 }
             else
