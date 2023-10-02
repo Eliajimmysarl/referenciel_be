@@ -77,6 +77,34 @@
                     $data["code"]  = 400;
 
                     $data["message"]  = "Ressource not created";
+
+                    $data["application_id"]  = "$application_id";
+
+                    $data["entite_id"]  = "$entite_id";
+
+                    $data["nom"]  = "$nom";
+
+                    $data["types"]  = "$types";
+
+                    $data["taille"]  = "$taille";
+
+                    $data["defaut"]  = "$defaut";
+
+                    $data["valeur"]  = "$valeur";
+
+                    $data["indexe"]  = "$indexe";
+
+                    $data["cle_primaire"]  = "$cle_primaire";
+
+                    $data["descriptions"]  = "$descriptions";
+
+                    $data["date_creation"]  = "$date_creation";
+
+                    $data["date_update"]  = "$date_update";
+
+                    $data["heure_creation"]  = "$heure_creation";
+
+                    $data["heure_update"]  = "$heure_update";
                 }
             else
                 {
