@@ -1,49 +1,43 @@
 <?php
 
-$application_id=$json_decode->application_id;
+$myjson=file_get_contents('php://input');
 
-$couche=$json_decode->couche; 
+    $json_decode= json_decode($myjson);
 
-$plateforme=$json_decode->plateforme; 
+    $userId=$json_decode->user_id;
 
-$entite_id=$json_decode->entite_id; 
+    $composantId=$json_decode->composant_id; 
 
-$nom=$json_decode->nom; 
+    $dateDebut=$json_decode->date_debut; 
 
-$descriptions=$json_decode->descriptions; 
+    $dateFin=$json_decode->date_fin; 
 
-$url_code=$json_decode->url_code;
+    $remarque=$json_decode->remarque; 
 
-$date_update = date("Y-m-d");
+    $date_creation = date("Y-m-d");
 
-$heure_update = date("H:i:s");  
-
-    
+    $date_update = date("Y-m-d");   
 
     try {
             $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
 
-            $stmt = $dbh->prepare("UPDATE test SET texte=?, selec=?,  dates=?, telephone=?, email=?, passwords=?, optionsRadios=?, date_update=?,  heure_update=? WHERE id=?");
-
-            $stmt->bindParam(1, $texte);
-
-            $stmt->bindParam(2, $selec);
-
-            $stmt->bindParam(3, $dates);
-
-            $stmt->bindParam(4, $telephone);
-
-            $stmt->bindParam(5, $email);
-
-            $stmt->bindParam(6, $passwords);
+            $stmt = $dbh->prepare("UPDATE planification SET user_id=?, composant_id=?, date_debut=?, date_fin=?, remarque=?, date_update=?, heure_update=? WHERE id=?");
             
-            $stmt->bindParam(7, $optionsRadios);
+            $stmt->bindParam(1, $userId);
+
+            $stmt->bindParam(2, $composantId);
+
+            $stmt->bindParam(3, $dateDebut);
+
+            $stmt->bindParam(4, $dateFin);
+
+            $stmt->bindParam(5,  $remarque);
+
+            $stmt->bindParam(6, $date_update);
+
+            $stmt->bindParam(7, $heure_update);
 
             $stmt->bindParam(8, $id);
-
-            $stmt->bindParam(8, $dateUpdate);
-
-            $stmt->bindParam(9, $heureUpdate);
 
             $stmt->execute();
 
@@ -73,25 +67,11 @@ $heure_update = date("H:i:s");
 
             $data["code"]  = 200;
 
-            $data["id"]  = "$last";
-
-            $data["texte"]  = "$texte";
-
-            $data["selec"]  = "$selec";
-
-            $data["dates"]  = "$dates";
-
-            $data["telephone"]  = "$telephone";
-
-            $data["email"]  = "$email";
-
-            $data["passwords"]  = "$passwords";
-            
-            $data["optionsRadios"]  = "$optionsRadios";
+            $data["planification"]  = "Planification updated";
 
             echo json_encode( $data );
             
-                $dbh = null;
+             $dbh = null;
                     
         }
     catch (PDOException $e) 
