@@ -69,7 +69,16 @@
                 }
             else if($methode=='GET')
                 {
-                    require_once("recuperation_plusieurs.php");
+                    $userId=$json_decode->user_id;
+                    
+                    if(isSet($userId))
+                        {
+                            require_once("recuperation_plusieurs_user.php");
+                        }
+                    else
+                        {
+                            require_once("recuperation_plusieurs.php");
+                        }
                 }  
             else if($methode=='PUT')
                 {
