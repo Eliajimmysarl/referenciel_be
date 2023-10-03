@@ -1,57 +1,47 @@
 <?php
 
-    $application_id=$json_decode->application_id;
-
-    $couche=$json_decode->couche; 
-
-    $plateforme=$json_decode->plateforme; 
-
-    $entite_id=$json_decode->entite_id; 
-
-    $nom=$json_decode->nom; 
-
-    $descriptions=$json_decode->descriptions; 
-
-    $url_code=$json_decode->url_code;
-
     $date_creation = date("Y-m-d");
-    
+
+    $date_update = date("Y-m-d");
+
     $heure_creation = date("H:i:s");
+
+    $heure_update = date("H:i:s");  
 
     try {
             $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
 
-            for($i=0; $i < count($composants); ++$i)
+            for($i=0; $i < count($planifications); ++$i)
                 {
-                    $application_id= $composants[$i][0];
+                    $userId= $planifications[$i][0];
                
-                    $couche= $composants[$i][1];
+                    $composantId= $planifications[$i][1];
 
-                    $plateforme= $composants[$i][2];
+                    $dateDebut= $planifications[$i][2];
 
-                    $entite_id= $composants[$i][3];
+                    $dateFin= $planifications[$i][3];
 
-                    $nom= $composants[$i][4];
+                    $remarque= $planifications[$i][4];
 
-                    $descriptions= $composants[$i][5];
+                    $stmt = $dbh->prepare("INSERT INTO planification (user_id, composant_id, date_debut, date_fin, remarque, date_creation, date_update, heure_creation, heure_update) VALUES (?,?,?,?,?,?,?,?,?)");
 
-                    $url_code= $composants[$i][6];
+                    $stmt->bindParam(1, $userId);
 
-                    $stmt = $dbh->prepare("INSERT INTO composant (application_id, couche, plateforme, entite_id, nom, descriptions, url_code, date_creation, heure_creation) VALUES (?,?,?,?,?,?,?,?,?)");
-
-                    $stmt->bindParam(1, $application_id);
-
-                    $stmt->bindParam(2, $couche);
-
-                    $stmt->bindParam(3, $plateforme);
-
-                    $stmt->bindParam(4, $entite_id);
-
-                    $stmt->bindParam(5, $nom);
-
-                    $stmt->bindParam(6, $descriptions);
-
-                    $stmt->bindParam(7, $url_code);
+                    $stmt->bindParam(2, $composantId);
+        
+                    $stmt->bindParam(3, $dateDebut);
+        
+                    $stmt->bindParam(4, $dateFin);
+        
+                    $stmt->bindParam(5,  $remarque);
+        
+                    $stmt->bindParam(6, $date_creation);
+        
+                    $stmt->bindParam(7, $date_update);
+        
+                    $stmt->bindParam(8, $heure_creation);
+        
+                    $stmt->bindParam(9, $heure_update);
 
                     $stmt->execute();
                 }
@@ -62,13 +52,13 @@
                 {
                     $data["code"]  = 400;
 
-                    $data["message"]  = "Ressource not created";
+                    $data["planification"]  = "Ressource not created";
                 }
             else
                 {
                     $data["code"]  = 201;
 
-                    $data["message"]  = "Ressource created";
+                    $data["planification"]  = "Ressource created";
                 }
             
             echo json_encode($data);
