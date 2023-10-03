@@ -23,7 +23,7 @@
         {   
             $data["code"]  = 403;
 
-            $data["message"]  = "Erreur 403 Forbidden:  Vous n'avez pas les permissions necessaires pour acceder a la ressource demandee";
+            $data["planification"]  = "Erreur 403 Forbidden:  Vous n'avez pas les permissions necessaires pour acceder a la ressource demandee";
         
             echo json_encode($data);  
         }
@@ -51,7 +51,7 @@
                         {
                             $data["code"]  = 400;
 
-                            $data["message"]  = "Erreur 400 :  Votre requete est POST et a un parametre id dans l'URL";
+                            $data["planification"]  = "Erreur 400 :  Votre requete est POST et a un parametre id dans l'URL";
                         
                             echo json_encode($data);     
                         }
@@ -62,14 +62,6 @@
                         { 
                             require_once("ajout_plusieurs.php"); 
                         }
-                    else if(isSet($_GET['excel']))
-                        { 
-                            require_once("import_excel.php"); 
-                        }
-                    else if(isSet($_GET['image']))
-                        { 
-                            require_once("import_image.php"); 
-                        }
                     else
                         {
                             require_once("ajout_un_seul.php");   
@@ -77,16 +69,7 @@
                 }
             else if($methode=='GET')
                 {
-                    $selections=$json_decode->selec;
-
-                    if(isSet($selections))
-                        {
-                            require_once("recuperation_plusieurs.php");
-                        }
-                    else
-                        {
-                            require_once("recuperation_avec_jointure.php");
-                        } 
+                    require_once("recuperation_plusieurs.php");
                 }  
             else if($methode=='PUT')
                 {
@@ -100,7 +83,7 @@
                 {
                     $data["code"]  = 405;
 
-                    $data["message"]  = "Erreur 405 :  Abscence de la méthode : POST, GET, PUT, DELETE";
+                    $data["planification"]  = "Erreur 405 :  Abscence de la méthode : POST, GET, PUT, DELETE";
                 
                     echo json_encode($data);
 

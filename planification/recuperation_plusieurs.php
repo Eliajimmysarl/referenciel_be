@@ -1,36 +1,41 @@
 <?php
 
-    try {
-            $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
+   try
+      {
+         $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
 
-            $stmt = $dbh->prepare("SELECT *FROM composant  ORDER BY id");
+         $stmt = $dbh->prepare("SELECT planification.user_id, planification.composant_id, planification.statut, planification.remarque, planification.date_debut, planification.date_fin, composant.nom, composant.id FROM `planification` INNER JOIN composant ON composant.id=planification.composant_id ");
 
-            $stmt->execute();
+         $stmt->execute();
 
-            $datas = array();
+         $datas = array();
 
-            $nombreLigne = $stmt->rowCount();
-            
-            if($nombreLigne > 0)
-                { 
-                    while($resultat=$stmt->fetch(PDO::FETCH_ASSOC)) 
-                        {
-                            $datas["code"]  = 200;
-                            
-                            $datas['composant'][]=$resultat;
-                        }
-                }
-            else
-                {
-                    $datas["code"]  = 400;
-        
-                    $datas['token'][]="Ressource not found";
-                }   
-            echo json_encode($datas);
-            
-        }
-    catch (PDOException $e) {
-                print "Erreur !: " . $e->getMessage() . "<br/>";
-                die();
-    }
-?> 
+         $nombreLigne = $stmt->rowCount();
+              
+         if($nombreLigne > 0)
+            { 
+               while($resultat=$stmt->fetch(PDO::FETCH_ASSOC)) 
+                  {
+                     $datas["code"]  = 200;
+
+                     $datas['planification'][]=$resultat;
+                  }
+            }
+         else
+            {
+               $datas["code"]  = 400;
+      
+               $datas['planification'][]="Ressource not found";
+            }
+               
+         echo json_encode($datas);
+      }
+
+   catch (PDOException $e)
+      {
+         print "Erreur !: " . $e->getMessage() . "<br/>";
+              
+         die();
+      }
+   
+   ?>
