@@ -1,43 +1,43 @@
 <?php
 
-$application_id=$json_decode->application_id;
+$applicationId=$json_decode->application_id;
 
 $couche=$json_decode->couche; 
 
 $plateforme=$json_decode->plateforme; 
 
-$entite_id=$json_decode->entite_id; 
+$entiteId=$json_decode->entite_id; 
 
 $nom=$json_decode->nom; 
 
 $descriptions=$json_decode->descriptions; 
 
-$url_code=$json_decode->url_code;
+$urlCode=$json_decode->url_code;
 
-$date_update = date("Y-m-d");
+$dateUpdate = date("Y-m-d");
 
-$heure_update = date("H:i:s");  
+$heureUpdate = date("H:i:s");  
 
     
 
     try {
             $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
 
-            $stmt = $dbh->prepare("UPDATE test SET texte=?, selec=?,  dates=?, telephone=?, email=?, passwords=?, optionsRadios=?, date_update=?,  heure_update=? WHERE id=?");
+            $stmt = $dbh->prepare("UPDATE composant SET application_id=?, couche=?,  plateforme=?, entite_id=?, nom=?, descriptions=?, url_code=?, date_update=?,  heure_update=? WHERE id=?");
 
-            $stmt->bindParam(1, $texte);
+            $stmt->bindParam(1, $applicationId);
 
-            $stmt->bindParam(2, $selec);
+            $stmt->bindParam(2, $couche);
 
-            $stmt->bindParam(3, $dates);
+            $stmt->bindParam(3, $plateforme);
 
-            $stmt->bindParam(4, $telephone);
+            $stmt->bindParam(4, $entiteId);
 
-            $stmt->bindParam(5, $email);
+            $stmt->bindParam(5, $nom);
 
-            $stmt->bindParam(6, $passwords);
+            $stmt->bindParam(6, $descriptions);
             
-            $stmt->bindParam(7, $optionsRadios);
+            $stmt->bindParam(7, $urlCode);
 
             $stmt->bindParam(8, $id);
 
@@ -47,21 +47,21 @@ $heure_update = date("H:i:s");
 
             $stmt->execute();
 
-            $stmt = $dbh->prepare("SELECT *FROM test WHERE texte=? AND selec=? AND  dates=? AND telephone=? AND email=? AND passwords=? AND optionsRadios=? AND date_update=? AND  heure_update=?");
+            $stmt = $dbh->prepare("SELECT *FROM composant WHERE application_id=? AND couche=? AND  plateforme=? AND entite_id=? AND nom=? AND descriptions=? AND url_code=? AND date_update=? AND  heure_update=?");
             
-            $stmt->bindParam(1, $texte);
+            $stmt->bindParam(1, $applicationId);
 
-            $stmt->bindParam(2, $selec);
+            $stmt->bindParam(2, $couche);
 
-            $stmt->bindParam(3, $dates);
+            $stmt->bindParam(3, $plateforme);
 
-            $stmt->bindParam(4, $telephone);
+            $stmt->bindParam(4, $entiteId);
 
-            $stmt->bindParam(5, $email);
+            $stmt->bindParam(5, $nom);
 
-            $stmt->bindParam(6, $passwords);
+            $stmt->bindParam(6, $descriptions);
             
-            $stmt->bindParam(7, $optionsRadios);
+            $stmt->bindParam(7, $urlCode);
 
             $stmt->bindParam(8, $id);
 
@@ -75,19 +75,19 @@ $heure_update = date("H:i:s");
 
             $data["id"]  = "$last";
 
-            $data["texte"]  = "$texte";
+            $data["application_id"]  = "$applicationId";
 
-            $data["selec"]  = "$selec";
+            $data["couche"]  = "$couche";
 
-            $data["dates"]  = "$dates";
+            $data["plateforme"]  = "$plateforme";
 
-            $data["telephone"]  = "$telephone";
+            $data["entite_id"]  = "$entiteId";
 
-            $data["email"]  = "$email";
+            $data["nom"]  = "$nom";
 
-            $data["passwords"]  = "$passwords";
+            $data["descriptions"]  = "$descriptions";
             
-            $data["optionsRadios"]  = "$optionsRadios";
+            $data["url_code"]  = "$urlCode";
 
             echo json_encode( $data );
             

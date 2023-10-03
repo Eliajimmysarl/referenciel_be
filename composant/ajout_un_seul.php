@@ -4,54 +4,54 @@
 
     $json_decode= json_decode($myjson);
 
-    $application_id=$json_decode->application_id;
+    $applicationId=$json_decode->application_id;
 
     $couche=$json_decode->couche; 
 
     $plateforme=$json_decode->plateforme; 
 
-    $entite_id=$json_decode->entite_id; 
+    $entiteId=$json_decode->entite_id; 
 
     $nom=$json_decode->nom; 
 
     $descriptions=$json_decode->descriptions; 
 
-    $url_code=$json_decode->url_code;
+    $urlCode=$json_decode->url_code;
 
-    $date_creation = date("Y-m-d");
+    $dateCreation = date("Y-m-d");
 
-    $date_update = date("Y-m-d");
+    $dateUpdate = date("Y-m-d");
     
-    $heure_creation = date("H:i:s");
+    $heureCreation = date("H:i:s");
 
-    $heure_update = date("H:i:s");  
+    $heureUpdate = date("H:i:s");  
 
     try {
             $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
 
             $stmt = $dbh->prepare("INSERT INTO composant (application_id, couche, plateforme, entite_id, nom, descriptions, url_code, date_creation, date_update, heure_creation, heure_update) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
 
-            $stmt->bindParam(1, $application_id);
+            $stmt->bindParam(1, $applicationId);
 
             $stmt->bindParam(2, $couche);
 
             $stmt->bindParam(3, $plateforme);
 
-            $stmt->bindParam(4, $entite_id);
+            $stmt->bindParam(4, $entiteId);
 
             $stmt->bindParam(5, $nom);
 
             $stmt->bindParam(6, $descriptions);
 
-            $stmt->bindParam(7, $url_code);
+            $stmt->bindParam(7, $urlCode);
 
-            $stmt->bindParam(8, $date_creation);
+            $stmt->bindParam(8, $dateCreation);
 
-            $stmt->bindParam(9, $date_update);
+            $stmt->bindParam(9, $dateUpdate);
 
-            $stmt->bindParam(10, $heure_creation);
+            $stmt->bindParam(10, $heureCreation);
 
-            $stmt->bindParam(11, $heure_update);
+            $stmt->bindParam(11, $heureUpdate);
 
 
             $stmt->execute();
@@ -70,21 +70,21 @@
 
                     $data["id"]  = "$last";
 
-                    $data["application_id"]  = "$application_id";
+                    $data["application_id"]  = "$applicationId";
 
                     $data["couche"]  = "$couche";
 
                     $data["plateforme"]  = "$plateforme";
 
-                    $data["entite_id"]  = "$entite_id";
+                    $data["entite_id"]  = "$entiteId";
 
                     $data["nom"]  = "$nom";
 
                     $data["descriptions"]  = "$descriptions";
 
-                    $data["url_code"]  = "$url_code";
+                    $data["url_code"]  = "$urlCode";
 
-                    $data["reponse"]  = "Le test $application_id $nom avec l'id $id est cree";  
+                    $data["reponse"]  = "Le test $applicationId $nom avec l'id $id est cree";  
                 }
             
             echo json_encode( $data );
