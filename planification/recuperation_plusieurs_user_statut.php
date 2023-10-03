@@ -8,7 +8,7 @@
 
          $stmt->bindParam(1, $userId);
 
-         $stmt->bindParam(1, $statut);
+         $stmt->bindParam(2, $statut);
 
          $stmt->execute();
 
