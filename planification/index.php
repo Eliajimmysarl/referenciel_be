@@ -73,7 +73,11 @@
 
                     $statut=$json_decode->statut;
                     
-                    if(isSet($userId))
+                    if((isSet($userId)) AND (isSet($statut)))
+                        {
+                            require_once("recuperation_plusieurs_user_statut.php");
+                        }
+                    else if(isSet($userId))
                         {
                             require_once("recuperation_plusieurs_user.php");
                         }
