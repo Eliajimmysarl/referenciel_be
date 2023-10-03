@@ -14,5 +14,7 @@ RewriteRule ^donnee_echange/([0-9]+)$ donnee_echange/index.php?id=$1 [L]
 
 RewriteRule ^donnee_persistante/([0-9]+)$ donnee_persistante/index.php?id=$1 [L]
 
+RewriteRule ^planification/([0-9]+)$ planification/index.php?id=$1 [L]
+
 
 
