@@ -70,10 +70,16 @@
             else if($methode=='GET')
                 {
                     $userId=$json_decode->user_id;
+
+                    $statut=$json_decode->statut;
                     
                     if(isSet($userId))
                         {
                             require_once("recuperation_plusieurs_user.php");
+                        }
+                    else if(isSet($statut))
+                        {
+                            require_once("recuperation_plusieurs_statut.php");
                         }
                     else
                         {
