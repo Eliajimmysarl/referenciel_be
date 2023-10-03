@@ -10,7 +10,7 @@
 
             $stmt->execute();
 
-            $stmt = $dbh->prepare("SELECT planification.user_id, planification.composant_id, planification.statut, planification.remarque, planification.date_debut, planification.date_fin, composant.nom, composant.id FROM `planification` INNER JOIN composant ON composant.id=planification.composant_id WHERE planification.user_id= ? ");
+            $stmt = $dbh->prepare("SELECT planification.user_id, planification.composant_id, planification.statut, planification.remarque, planification.date_debut, planification.date_fin, composant.nom, composant.id FROM `planification` INNER JOIN composant ON composant.id=planification.composant_id ");
                                 
             $stmt->execute();
                     
