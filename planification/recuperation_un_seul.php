@@ -4,7 +4,7 @@
         {
             $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
             
-            $stmt = $dbh->prepare("SELECT *FROM composant WHERE id = :id");
+            $stmt = $dbh->prepare("SELECT planification.user_id, planification.composant_id, planification.statut, planification.remarque, planification.date_debut, planification.date_fin, composant.nom, composant.id FROM `planification` INNER JOIN composant ON composant.id=planification.composant_id  WHERE planification.id = :id");
             
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             
@@ -20,14 +20,14 @@
                         {
                             $datas["code"]  = 200;
 
-                            $datas['composant'][]=$resultat;
+                            $datas['planification'][]=$resultat;
                         }
                 }
             else
                 {
                     $datas["code"]  = 400;
         
-                    $datas['token'][]="Ressource not found";
+                    $datas['planification'][]="Ressource not found";
                 }
                 
             echo json_encode($datas);
