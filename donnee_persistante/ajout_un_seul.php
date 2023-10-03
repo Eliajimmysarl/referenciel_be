@@ -4,9 +4,9 @@
 
     $json_decode= json_decode($myjson);
     
-    $application_id=$json_decode->application_id;
+    $applicationId=$json_decode->application_id;
 
-    $entite_id=$json_decode->entite_id; 
+    $entiteId=$json_decode->entite_id; 
 
     $nom=$json_decode->nom; 
 
@@ -20,17 +20,17 @@
 
     $indexe=$json_decode->indexe;
 
-    $cle_primaire=$json_decode->cle_primaire;
+    $clePrimaire=$json_decode->cle_primaire;
 
     $descriptions=$json_decode->descriptions; 
 
-    $date_creation = date("Y-m-d");
+    $dateCreation = date("Y-m-d");
 
-    $date_update = date("Y-m-d");
+    $dateCpdate = date("Y-m-d");
     
-    $heure_creation = date("H:i:s");
+    $heureCreation = date("H:i:s");
 
-    $heure_update = date("H:i:s");    
+    $heureUpdate = date("H:i:s");    
     
 
     try {
@@ -38,9 +38,9 @@
 
             $stmt = $dbh->prepare("INSERT INTO donnee_persistante (application_id, entite_id, nom, types, taille, defaut, valeur, indexe, cle_primaire, descriptions, date_creation, date_update, heure_creation, heure_update) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
-            $stmt->bindParam(1, $application_id);
+            $stmt->bindParam(1, $applicationId);
 
-            $stmt->bindParam(2, $entite_id);
+            $stmt->bindParam(2, $entiteId);
 
             $stmt->bindParam(3, $nom);
 
@@ -54,17 +54,17 @@
 
             $stmt->bindParam(8, $indexe);
 
-            $stmt->bindParam(9, $cle_primaire);
+            $stmt->bindParam(9, $clePrimaire);
 
             $stmt->bindParam(10, $descriptions);
 
-            $stmt->bindParam(11, $date_creation);
+            $stmt->bindParam(11, $dateCreation);
 
-            $stmt->bindParam(12, $date_update);
+            $stmt->bindParam(12, $dateUpdate);
 
-            $stmt->bindParam(13, $heure_creation);
+            $stmt->bindParam(13, $heureCreation);
 
-            $stmt->bindParam(14, $heure_update);
+            $stmt->bindParam(14, $heureUpdate);
 
              
 
@@ -78,33 +78,6 @@
 
                     $data["message"]  = "Ressource not created";
 
-                    $data["application_id"]  = "$application_id";
-
-                    $data["entite_id"]  = "$entite_id";
-
-                    $data["nom"]  = "$nom";
-
-                    $data["types"]  = "$types";
-
-                    $data["taille"]  = "$taille";
-
-                    $data["defaut"]  = "$defaut";
-
-                    $data["valeur"]  = "$valeur";
-
-                    $data["indexe"]  = "$indexe";
-
-                    $data["cle_primaire"]  = "$cle_primaire";
-
-                    $data["descriptions"]  = "$descriptions";
-
-                    $data["date_creation"]  = "$date_creation";
-
-                    $data["date_update"]  = "$date_update";
-
-                    $data["heure_creation"]  = "$heure_creation";
-
-                    $data["heure_update"]  = "$heure_update";
                 }
             else
                 {
@@ -112,9 +85,9 @@
 
                     $data["id"]  = "$last";
 
-                    $data["application_id"]  = "$application_id";
+                    $data["application_id"]  = "$applicationId";
 
-                    $data["entite_id"]  = "$entite_id";
+                    $data["entite_id"]  = "$entiteId";
 
                     $data["nom"]  = "$nom";
 
@@ -128,20 +101,20 @@
 
                     $data["indexe"]  = "$indexe";
 
-                    $data["cle_primaire"]  = "$cle_primaire";
+                    $data["cle_primaire"]  = "$clePrimaire";
 
                     $data["descriptions"]  = "$descriptions";
 
-                    $data["date_creation"]  = "$date_creation";
+                    $data["date_creation"]  = "$dateCreation";
 
-                    $data["date_update"]  = "$date_update";
+                    $data["date_update"]  = "$dateUpdate";
 
-                    $data["heure_creation"]  = "$heure_creation";
+                    $data["heure_creation"]  = "$heureCreation";
 
-                    $data["heure_update"]  = "$heure_update";
+                    $data["heure_update"]  = "$heureUpdate";
 
 
-                    $data["reponse"]  = "Le test $application_id $entite_id avec l'id $id est cree";  
+                    $data["reponse"]  = "Le test $applicationId $entiteId avec l'id $id est cree";  
                 }
             
             echo json_encode( $data );

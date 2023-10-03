@@ -1,31 +1,15 @@
 <?php
 
-    $application_id=$json_decode->application_id;
-
-    $composant_id=$json_decode->composant_id; 
-
-    $entite_id=$json_decode->entite_id; 
-
-    $nom=$json_decode->nom; 
-
-    $types=$json_decode->types; 
-
-    $descriptions=$json_decode->descriptions; 
-
-    $date_creation = date("Y-m-d");
-    
-    $heure_creation = date("H:i:s");
-
     try {
             $dbh = new PDO('mysql:host=localhost;dbname='.$db_referenciel, $user, $pass);
 
             for($i=0; $i < count($donnee_echanges); ++$i)
                 {
-                    $application_id= $donnee_echanges[$i][0];
+                    $applicationId= $donnee_echanges[$i][0];
                
-                    $composant_id= $donnee_echanges[$i][1];
+                    $composantId= $donnee_echanges[$i][1];
 
-                    $entite_id= $donnee_echanges[$i][2];
+                    $entiteId= $donnee_echanges[$i][2];
 
                     $nom= $donnee_echanges[$i][3];
 
@@ -35,11 +19,11 @@
 
                     $stmt = $dbh->prepare("INSERT INTO donnee_echange (application_id, composant_id,  entite_id, nom, types, descriptions, date_creation, heure_creation) VALUES (?,?,?,?,?,?,?,?)");
 
-                    $stmt->bindParam(1, $application_id);
+                    $stmt->bindParam(1, $applicationId);
 
-                    $stmt->bindParam(2, $composant_id);
+                    $stmt->bindParam(2, $composantId);
 
-                    $stmt->bindParam(3, $entite_id);
+                    $stmt->bindParam(3, $entiteId);
 
                     $stmt->bindParam(4, $nom);
 

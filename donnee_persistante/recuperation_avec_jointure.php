@@ -1,8 +1,8 @@
 <?php
 
-   $application_id=$json_decode->application_id;
+   $applicationId=$json_decode->application_id;
 
-   $entite_id=$json_decode->entite_id; 
+   $entiteId=$json_decode->entite_id; 
 
    $nom=$json_decode->nom; 
 
@@ -16,7 +16,7 @@
 
    $indexe=$json_decode->indexe;
 
-   $cle_primaire=$json_decode->cle_primaire;
+   $clePrimaire=$json_decode->cle_primaire;
 
    $descriptions=$json_decode->descriptions;
 
@@ -27,9 +27,9 @@
 
          $stmt = $dbh->prepare("SELECT donnee_persistante.id, donnee_persistante.application_id, donnee_persistante.entite_id,donnee_persistante.nom, applications.id, entite.id FROM `donnee_persistante` INNER JOIN applications ON donnee_persistante.application_id=applications.id INNER JOIN entite ON donnee_persistante.entite_id=entite.id  WHERE donnee_persistante.application_id= ? AND donnee_persistante.entite_id= ? ");
 
-         $stmt->bindParam(1, $application_id);
+         $stmt->bindParam(1, $applicationId);
                      
-         $stmt->bindParam(2, $entite_id);
+         $stmt->bindParam(2, $entiteId);
 
          $stmt->execute();
 
