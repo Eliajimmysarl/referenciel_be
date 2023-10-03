@@ -1,29 +1,29 @@
 <?php
 
-    $application_id=$json_decode->application_id;
+    $applicationId=$json_decode->application_id;
 
-    $entite_id=$json_decode->entite_id; 
+    $entiteId=$json_decode->entite_id; 
 
-    $composant_id=$json_decode->composant_id; 
+    $composantId=$json_decode->composant_id; 
 
     $methode=$json_decode->methode; 
 
     $uri=$json_decode->uri; 
 
-    $date_update = date("Y-m-d");
+    $dateUpdate = date("Y-m-d");
     
-    $heure_update = date("H:i:s");
+    $heureUpdate = date("H:i:s");
 
     try {
             $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
 
             $stmt = $dbh->prepare("UPDATE api SET application_id=?, entite_id=?,  composant_id=?, methode=?, uri=? date_update=?,  heure_update=? WHERE id=?");
 
-            $stmt->bindParam(1, $application_id);
+            $stmt->bindParam(1, $applicationId);
 
-            $stmt->bindParam(2, $entite_id);
+            $stmt->bindParam(2, $entiteId);
 
-            $stmt->bindParam(3, $composant_id);
+            $stmt->bindParam(3, $composantId);
 
             $stmt->bindParam(4, $methode);
 
@@ -31,19 +31,19 @@
 
             $stmt->bindParam(6, $id);
 
-            $stmt->bindParam(7, $date_update);
+            $stmt->bindParam(7, $dateUpdate);
 
-            $stmt->bindParam(8, $heure_update);
+            $stmt->bindParam(8, $heureUpdate);
 
             $stmt->execute();
 
             $stmt = $dbh->prepare("SELECT *FROM api WHERE application_id=? AND entite_id=? AND  composant_id=? AND methode_id=? AND uri=? AND date_update=? AND  heure_update=?");
             
-            $stmt->bindParam(1, $application_id);
+            $stmt->bindParam(1, $applicationId);
 
-            $stmt->bindParam(2, $entite_id);
+            $stmt->bindParam(2, $entiteId);
 
-            $stmt->bindParam(3, $composant_id);
+            $stmt->bindParam(3, $composantId);
 
             $stmt->bindParam(4, $methode);
 
@@ -51,9 +51,9 @@
 
             $stmt->bindParam(6, $id);
 
-            $stmt->bindParam(7, $date_update);
+            $stmt->bindParam(7, $dateUpdate);
 
-            $stmt->bindParam(8, $heure_update);
+            $stmt->bindParam(8, $heureUpdate);
 
             $stmt->execute();        
 
@@ -61,19 +61,19 @@
 
             $data["id"]  = "$last";
 
-            $data["application_id"]  = "$application_id";
+            $data["application_id"]  = "$applicationId";
 
-            $data["entite_id"]  = "$entite_id";
+            $data["entite_id"]  = "$entiteId";
 
-            $data["composant_id"]  = "$composant_id";
+            $data["composant_id"]  = "$composantId";
 
             $data["methode"]  = "$methode";
 
             $data["uri"]  = "$uri";
 
-            $data["date_update"]  = "$date_update";
+            $data["date_update"]  = "$dateUpdate";
             
-            $data["heure_update"]  = "$heure_update";
+            $data["heure_update"]  = "$heureUpdate";
 
             echo json_encode( $data );
             
