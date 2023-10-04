@@ -21,11 +21,11 @@ $heureUpdate = date("H:i:s");
 
             $stmt->bindParam(3, $descriptions);
 
-            $stmt->bindParam(4, $id);
+            $stmt->bindParam(4, $dateUpdate);
 
-            $stmt->bindParam(5, $dateUpdate);
+            $stmt->bindParam(5, $heureUpdate);
 
-            $stmt->bindParam(6, $heureUpdate);
+            $stmt->bindParam(6, $id);
 
             $stmt->execute();
 
