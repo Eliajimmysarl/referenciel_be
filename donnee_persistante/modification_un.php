@@ -25,7 +25,7 @@
     $heureUpdate = date("H:i:s");
 
     try {
-            $dbh = new PDO('mysql:host=localhost;dbname='.$db_referenciel, $user, $pass);
+            $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
 
             $stmt = $dbh->prepare("UPDATE donnee_persistante SET application_id=?, entite_id=?, nom=?, types=?, taille=?, defaut=?, valeur=?, indexe=?, cle_primaire=?, descriptions=?, date_update=?, heure_update=? WHERE id=? ");
 
