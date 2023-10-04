@@ -52,7 +52,7 @@ $heureUpdate = date("H:i:s");
 
             $data["code"]  = 200;
 
-            $data["id"]  = "$last";
+            $data["id"]  = "$id";
 
             $data["nom"]  = "$nom";
 
