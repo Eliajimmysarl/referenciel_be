@@ -29,25 +29,10 @@ $heureUpdate = date("H:i:s");
 
             $stmt->execute();
 
-            $stmt = $dbh->prepare("SELECT *FROM entite WHERE application_id=? AND nom=? AND  descriptions=?  AND date_update=? AND  heure_update=?");
-            
-            $stmt->bindParam(1, $applicationId);
-
-            $stmt->bindParam(2, $nom);
-
-            $stmt->bindParam(3, $descriptions);
-
-            $stmt->bindParam(4, $id);
-
-            $stmt->bindParam(5, $dateUpdate);
-
-            $stmt->bindParam(6, $heureUpdate);
-
-            $stmt->execute();        
-
+           
             $data["code"]  = 200;
 
-            $data["id"]  = "$last";
+            $data["id"]  = "$id";
 
             $data["application_id"]  = "$applicationId";
 
