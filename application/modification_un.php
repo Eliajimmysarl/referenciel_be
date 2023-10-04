@@ -50,33 +50,6 @@ $heureUpdate = date("H:i:s");
 
             $stmt->execute();
 
-            $stmt = $dbh->prepare("SELECT *FROM applications WHERE nom=? AND descriptions=? AND lien_web=? AND lien_android=? AND lien_ios=? AND ussd_vodacom=? AND ussd_africell=? AND ussd_orange=?  AND date_update=? AND  heure_update=?");
-            
-            $stmt->bindParam(1, $nom);
-
-            $stmt->bindParam(2, $descriptions);
-
-            $stmt->bindParam(3, $lienWeb);
-
-            $stmt->bindParam(4, $lienAndroid);
-
-            $stmt->bindParam(5, $lienIos);
-
-            $stmt->bindParam(6, $ussdVodacom);
-            
-            $stmt->bindParam(7, $ussdAfricell);
-
-            $stmt->bindParam(8, $ussdOrange);
-
-            $stmt->bindParam(9, $dateUpdate);
-
-            $stmt->bindParam(10, $heureUpdate);
-
-            $stmt->bindParam(11, $id);
-
-
-            $stmt->execute();        
-
             $data["code"]  = 200;
 
             $data["id"]  = "$last";
