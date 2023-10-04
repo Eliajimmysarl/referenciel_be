@@ -29,11 +29,11 @@
 
             $stmt->bindParam(5, $uri);
 
-            $stmt->bindParam(6, $id);
+            $stmt->bindParam(6, $dateUpdate);
 
-            $stmt->bindParam(7, $dateUpdate);
+            $stmt->bindParam(7, $heureUpdate);
 
-            $stmt->bindParam(8, $heureUpdate);
+            $stmt->bindParam(8, $id);
 
             $stmt->execute();
 
