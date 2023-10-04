@@ -77,7 +77,7 @@
                 }
             else if($methode=='GET')
                 {
-                    $selections=$json_decode->selec;
+                    $selections=$json_decode->api;
 
                     if(isSet($selections))
                         {
