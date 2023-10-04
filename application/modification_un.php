@@ -73,7 +73,6 @@ $heureUpdate = date("H:i:s");
 
             $stmt->bindParam(11, $heureUpdate);
 
-
             $stmt->execute();        
 
             $data["code"]  = 200;
@@ -82,27 +81,27 @@ $heureUpdate = date("H:i:s");
 
             $data["nom"]  = "$nom";
 
-                    $data["descriptions"]  = "$descriptions";
+            $data["descriptions"]  = "$descriptions";
 
-                    $data["lien_web"]  = "$lienWeb";
+            $data["lien_web"]  = "$lienWeb";
 
-                    $data["lien_android"]  = "$lienAndroid";
+            $data["lien_android"]  = "$lienAndroid";
 
-                    $data["lien_ios"]  = "$lienIos";
+            $data["lien_ios"]  = "$lienIos";
 
-                    $data["ussd_vodacom"]  = "$ussdVodacom";
+            $data["ussd_vodacom"]  = "$ussdVodacom";
 
-                    $data["ussd_africell"]  = "$ussdAfricell";
+            $data["ussd_africell"]  = "$ussdAfricell";
 
-                    $data["ussd_orange"]  = "$ussdOrange";
+            $data["ussd_orange"]  = "$ussdOrange";
 
-                    $data["date_creation"]  = "$dateCreation";
+            $data["date_creation"]  = "$dateCreation";
 
-                    $data["date_update"]  = "$dateUpdate";
+            $data["date_update"]  = "$dateUpdate";
 
-                    $data["heure_creation"]  = "$heureCreation";
+            $data["heure_creation"]  = "$heureCreation";
 
-                    $data["heure_update"]  = "$heureUpdate";
+            $data["heure_update"]  = "$heureUpdate";
 
             echo json_encode( $data );
             
