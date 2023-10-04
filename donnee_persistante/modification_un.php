@@ -19,7 +19,7 @@
     try {
             $dbh = new PDO('mysql:host=localhost;dbname='.$db_referenciel, $user, $pass);
 
-            $stmt = $dbh->prepare("UPDATE donnee_echange SET application_id=?, composant_id=?, entite_id=?, nom=?, types=?, descriptions=? date_update=?,  heure_update=? WHERE id=?");
+            $stmt = $dbh->prepare("UPDATE donnee_echange SET application_id=?, composant_id=?, entite_id=?, nom=?, types=?, descriptions=?, date_update=?, heure_update=? WHERE id=? ");
 
             $stmt->bindParam(1, $applicationId);
 
@@ -39,7 +39,7 @@
 
             $stmt->bindParam(9, $id);
 
-            $stmt->execute();        
+            $stmt->execute();          
 
             $data["code"]  = 200;
 
