@@ -77,16 +77,9 @@
                 }
             else if($methode=='GET')
                 {
-                    $selections=$json_decode->selec;
-
-                    if(isSet($selections))
-                        {
+                
                             require_once("recuperation_plusieurs.php");
-                        }
-                    else
-                        {
-                            require_once("recuperation_avec_jointure.php");
-                        } 
+                
                 }  
             else if($methode=='PUT')
                 {
