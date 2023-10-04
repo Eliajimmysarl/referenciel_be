@@ -17,7 +17,7 @@
     try {
             $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
 
-            $stmt = $dbh->prepare("UPDATE api SET application_id=?, entite_id=?,  composant_id=?, methode=?, uri=? date_update=?,  heure_update=? WHERE id=?");
+            $stmt = $dbh->prepare("UPDATE api SET application_id=?, entite_id=?, composant_id=?, methode=?, uri=?, date_update=?, heure_update=? WHERE id=?");
 
             $stmt->bindParam(1, $applicationId);
 
@@ -31,7 +31,7 @@
 
             $stmt->bindParam(6, $dateUpdate);
 
-            $stmt->bindParam(7, $heureUpdate);
+            $stmt->bindParam(7, $heureUpdate);  
 
             $stmt->bindParam(8, $id);
 
