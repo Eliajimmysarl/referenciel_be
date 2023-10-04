@@ -41,11 +41,12 @@ $heureUpdate = date("H:i:s");
 
             $stmt->bindParam(8, $ussdOrange);
 
-            $stmt->bindParam(9, $id);
+            $stmt->bindParam(9, $dateUpdate);
 
-            $stmt->bindParam(10, $dateUpdate);
+            $stmt->bindParam(10, $heureUpdate);
 
-            $stmt->bindParam(11, $heureUpdate);
+            $stmt->bindParam(11, $id);
+
 
             $stmt->execute();
 
@@ -67,11 +68,12 @@ $heureUpdate = date("H:i:s");
 
             $stmt->bindParam(8, $ussdOrange);
 
-            $stmt->bindParam(9, $id);
+            $stmt->bindParam(9, $dateUpdate);
 
-            $stmt->bindParam(10, $dateUpdate);
+            $stmt->bindParam(10, $heureUpdate);
 
-            $stmt->bindParam(11, $heureUpdate);
+            $stmt->bindParam(11, $id);
+
 
             $stmt->execute();        
 
