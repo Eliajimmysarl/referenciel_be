@@ -77,11 +77,9 @@
                 }
             else if($methode=='GET')
                 {
-                    
-                    
-                            require_once("recuperation_plusieurs.php");
                 
-                  
+                    require_once("recuperation_plusieurs.php");
+                
                 }  
             else if($methode=='PUT')
                 {
