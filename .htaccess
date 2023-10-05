@@ -5,7 +5,6 @@ RewriteEngine On
 RewriteRule ^application/([0-9]+)$ application/index.php?id=$1 [L]
 
 RewriteRule ^api/([0-9]+)$ api/index.php?id=$1 [L]
-RewriteRule ^api/([0-9]+)/$ /api/index.php?id=$1 [L]
 
 RewriteRule ^composant/([0-9]+)$ composant/index.php?id=$1 [L]
 
