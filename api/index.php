@@ -78,7 +78,7 @@
             else if($methode=='GET')
                 {
                       
-                    require_once("recuperation_plusieurs.php");
+                    require_once("recuperation_avec_jointure.php");
                     
                 }  
             else if($methode=='PUT')
