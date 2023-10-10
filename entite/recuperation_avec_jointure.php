@@ -12,12 +12,7 @@
 
          $stmt = $dbh->prepare(" SELECT entite.id, entite.nom AS entite_nom, entite.application_id, applications.nom AS applications_nom FROM `entite` INNER JOIN applications ON entite.application_id=applications.id WHERE entite.application_id=? ");
 
-         $stmt->bindParam(1, $id);
-
-         $stmt->bindParam(2, $entite_nom);
-
-         $stmt->bindParam(3, $application_id);
-         $stmt->bindParam(4, $applications_nom);
+         $stmt->bindParam(1,$application_id);
 
          $stmt->execute();
 
