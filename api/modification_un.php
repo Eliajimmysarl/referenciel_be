@@ -17,7 +17,7 @@
     try {
             $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
 
-            $stmt = $dbh->prepare("UPDATE api SET application_id=?, entite_id=?,  composant_id=?, methode=?, uri=? date_update=?,  heure_update=? WHERE id=?");
+            $stmt = $dbh->prepare("UPDATE api SET application_id=?, entite_id=?, composant_id=?, methode=?, uri=?, date_update=?, heure_update=? WHERE id=?");
 
             $stmt->bindParam(1, $applicationId);
 
@@ -29,37 +29,17 @@
 
             $stmt->bindParam(5, $uri);
 
-            $stmt->bindParam(6, $id);
+            $stmt->bindParam(6, $dateUpdate);
 
-            $stmt->bindParam(7, $dateUpdate);
+            $stmt->bindParam(7, $heureUpdate);  
 
-            $stmt->bindParam(8, $heureUpdate);
+            $stmt->bindParam(8, $id);
 
             $stmt->execute();
 
-            $stmt = $dbh->prepare("SELECT *FROM api WHERE application_id=? AND entite_id=? AND  composant_id=? AND methode_id=? AND uri=? AND date_update=? AND  heure_update=?");
-            
-            $stmt->bindParam(1, $applicationId);
-
-            $stmt->bindParam(2, $entiteId);
-
-            $stmt->bindParam(3, $composantId);
-
-            $stmt->bindParam(4, $methode);
-
-            $stmt->bindParam(5, $uri);
-
-            $stmt->bindParam(6, $id);
-
-            $stmt->bindParam(7, $dateUpdate);
-
-            $stmt->bindParam(8, $heureUpdate);
-
-            $stmt->execute();        
-
             $data["code"]  = 200;
 
-            $data["id"]  = "$last";
+            $data["id"]  = "$id";
 
             $data["application_id"]  = "$applicationId";
 

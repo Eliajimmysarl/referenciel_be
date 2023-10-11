@@ -19,7 +19,7 @@
     try {
             $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
 
-            $stmt = $dbh->prepare("UPDATE donnee_echange SET application_id=?, composant_id=?, entite_id=?, nom=?, types=?, descriptions=? date_update=?,  heure_update=? WHERE id=?");
+            $stmt = $dbh->prepare("UPDATE donnee_echange SET application_id=?, composant_id=?, entite_id=?, nom=?, types=?, descriptions=?, date_update=?,  heure_update=? WHERE id=?");
 
             $stmt->bindParam(1, $applicationId);
 
@@ -33,39 +33,17 @@
 
             $stmt->bindParam(6, $descriptions);
 
-            $stmt->bindParam(7, $id);
+            $stmt->bindParam(7, $dateUpdate);
 
-            $stmt->bindParam(8, $dateUpdate);
+            $stmt->bindParam(8, $heureUpdate);
 
-            $stmt->bindParam(9, $heureUpdate);
+            $stmt->bindParam(9, $id);
 
             $stmt->execute();
 
-            $stmt = $dbh->prepare("SELECT *FROM donnee_echange WHERE application_id=? AND  composant_id=? AND entite_id=? AND  nom=?  AND types=? AND descriptions=? AND date_update=? AND  heure_update=?");
-            
-            $stmt->bindParam(1, $applicationId);
-
-            $stmt->bindParam(2, $composantId);
-
-            $stmt->bindParam(3, $entiteId);
-
-            $stmt->bindParam(4, $nom);
-
-            $stmt->bindParam(5, $types);
-
-            $stmt->bindParam(6, $descriptions);
-
-            $stmt->bindParam(7, $id);
-
-            $stmt->bindParam(8, $dateUpdate);
-
-            $stmt->bindParam(9, $heureUpdate);
-
-            $stmt->execute();        
-
             $data["code"]  = 200;
 
-            $data["id"]  = "$last";
+            $data["id"]  = "$id";
 
             $data["application_id"]  = "$applicationId";
 

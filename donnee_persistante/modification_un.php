@@ -2,13 +2,21 @@
 
     $applicationId=$json_decode->application_id;
 
-    $composantId=$json_decode->composant_id; 
-
     $entiteId=$json_decode->entite_id; 
 
     $nom=$json_decode->nom; 
 
     $types=$json_decode->types; 
+
+    $taille=$json_decode->taille; 
+
+    $defaut=$json_decode->defaut;
+
+    $valeur=$json_decode->valeur;
+
+    $indexe=$json_decode->indexe;
+
+    $clePrimaire=$json_decode->cle_primaire;
 
     $descriptions=$json_decode->descriptions; 
 
@@ -17,59 +25,43 @@
     $heureUpdate = date("H:i:s");
 
     try {
-            $dbh = new PDO('mysql:host=localhost;dbname='.$db_referenciel, $user, $pass);
+            $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
 
-            $stmt = $dbh->prepare("UPDATE donnee_echange SET application_id=?, composant_id=?, entite_id=?, nom=?, types=?, descriptions=? date_update=?,  heure_update=? WHERE id=?");
+            $stmt = $dbh->prepare("UPDATE donnee_persistante SET application_id=?, entite_id=?, nom=?, types=?, taille=?, defaut=?, valeur=?, indexe=?, cle_primaire=?, descriptions=?, date_update=?, heure_update=? WHERE id=? ");
 
             $stmt->bindParam(1, $applicationId);
 
-            $stmt->bindParam(2, $composantId);
+            $stmt->bindParam(2, $entiteId);
 
-            $stmt->bindParam(3, $entiteId);
+            $stmt->bindParam(3, $nom);
 
-            $stmt->bindParam(4, $nom);
+            $stmt->bindParam(4, $types);
 
-            $stmt->bindParam(5, $types);
+            $stmt->bindParam(5, $taille);
 
-            $stmt->bindParam(6, $descriptions);
+            $stmt->bindParam(6, $defaut);
 
-            $stmt->bindParam(7, $id);
+            $stmt->bindParam(7, $valeur);
 
-            $stmt->bindParam(8, $dateUpdate);
+            $stmt->bindParam(8, $indexe);
 
-            $stmt->bindParam(9, $heureUpdate);
+            $stmt->bindParam(9, $clePrimaire);
 
-            $stmt->execute();
+            $stmt->bindParam(10, $descriptions);
 
-            $stmt = $dbh->prepare("SELECT *FROM donnee_echange WHERE application_id=? AND  composant_id=? AND entite_id=? AND  nom=?  AND types=? AND descriptions=? AND date_update=? AND  heure_update=?");
-            
-            $stmt->bindParam(1, $applicationId);
+            $stmt->bindParam(11, $dateUpdate);
 
-            $stmt->bindParam(2, $composantId);
+            $stmt->bindParam(12, $heureUpdate);
 
-            $stmt->bindParam(3, $entiteId);
+            $stmt->bindParam(13, $id);
 
-            $stmt->bindParam(4, $nom);
-
-            $stmt->bindParam(5, $types);
-
-            $stmt->bindParam(6, $descriptions);
-
-            $stmt->bindParam(7, $id);
-
-            $stmt->bindParam(8, $dateUpdate);
-
-            $stmt->bindParam(9, $heureUpdate);
-
-            $stmt->execute();        
-
+            $stmt->execute();          
+   
             $data["code"]  = 200;
 
-            $data["id"]  = "$last";
+            $data["id"]  = "$id";
 
             $data["application_id"]  = "$applicationId";
-
-            $data["composant_id"]  = "$composantId";
 
             $data["entite_id"]  = "$entiteId";
 
@@ -77,10 +69,20 @@
 
             $data["types"]  = "$types";
 
+            $data["taille"]  = "$taille";
+
+            $data["defaut"]  = "$defaut";
+
+            $data["valeur"]  = "$valeur";
+
+            $data["indexe"]  = "$indexe";
+
+            $data["cle_primaire"]  = "$clePrimaire";
+
             $data["descriptions"]  = "$descriptions";
 
             $data["date_update"]  = "$dateUpdate";
-            
+
             $data["heure_update"]  = "$heureUpdate";
 
             echo json_encode( $data );

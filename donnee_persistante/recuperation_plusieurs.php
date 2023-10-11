@@ -3,7 +3,7 @@
     try {
             $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
 
-            $stmt = $dbh->prepare("SELECT *FROM donnee_echange   ORDER BY id");
+            $stmt = $dbh->prepare("SELECT *FROM donnee_persistante   ORDER BY id");
 
             $stmt->execute();
 
@@ -17,7 +17,7 @@
                         {
                             $datas["code"]  = 200;
                             
-                            $datas['donnee_echange'][]=$resultat;
+                            $datas['donnee_persistante'][]=$resultat;
                         }
                 }
             else

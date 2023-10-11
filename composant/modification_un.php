@@ -39,41 +39,17 @@ $heureUpdate = date("H:i:s");
             
             $stmt->bindParam(7, $urlCode);
 
-            $stmt->bindParam(8, $id);
-
             $stmt->bindParam(8, $dateUpdate);
 
             $stmt->bindParam(9, $heureUpdate);
 
-            $stmt->execute();
+            $stmt->bindParam(10, $id);
 
-            $stmt = $dbh->prepare("SELECT *FROM composant WHERE application_id=? AND couche=? AND  plateforme=? AND entite_id=? AND nom=? AND descriptions=? AND url_code=? AND date_update=? AND  heure_update=?");
-            
-            $stmt->bindParam(1, $applicationId);
+            $stmt->execute();    
 
-            $stmt->bindParam(2, $couche);
+            $data["code"]  = 200;  
 
-            $stmt->bindParam(3, $plateforme);
-
-            $stmt->bindParam(4, $entiteId);
-
-            $stmt->bindParam(5, $nom);
-
-            $stmt->bindParam(6, $descriptions);
-            
-            $stmt->bindParam(7, $urlCode);
-
-            $stmt->bindParam(8, $id);
-
-            $stmt->bindParam(8, $dateUpdate);
-
-            $stmt->bindParam(9, $heureUpdate);
-
-            $stmt->execute();        
-
-            $data["code"]  = 200;
-
-            $data["id"]  = "$last";
+            $data["id"]  = "$id";
 
             $data["application_id"]  = "$applicationId";
 

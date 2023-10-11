@@ -4,7 +4,7 @@
         {
             $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
             
-            $stmt = $dbh->prepare("SELECT *FROM donnee_echange WHERE id = :id");
+            $stmt = $dbh->prepare("SELECT *FROM donnee_persistante WHERE id = :id");
             
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             
@@ -20,7 +20,7 @@
                         {
                             $datas["code"]  = 200;
 
-                            $datas['donnee_echange'][]=$resultat;
+                            $datas['donnee_persistante'][]=$resultat;
                         }
                 }
             else
@@ -29,7 +29,7 @@
         
                     $datas['token'][]="Ressource not found";
                 }
-                
+                  
             echo json_encode($datas);
         }
 
