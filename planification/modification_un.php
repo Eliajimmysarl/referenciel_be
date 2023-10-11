@@ -1,9 +1,5 @@
 <?php
 
-$myjson=file_get_contents('php://input');
-
-    $json_decode= json_decode($myjson);
-
     $userId=$json_decode->user_id;
 
     $composantId=$json_decode->composant_id; 
@@ -40,30 +36,6 @@ $myjson=file_get_contents('php://input');
             $stmt->bindParam(8, $id);
 
             $stmt->execute();
-
-            $stmt = $dbh->prepare("SELECT *FROM test WHERE texte=? AND selec=? AND  dates=? AND telephone=? AND email=? AND passwords=? AND optionsRadios=? AND date_update=? AND  heure_update=?");
-            
-            $stmt->bindParam(1, $texte);
-
-            $stmt->bindParam(2, $selec);
-
-            $stmt->bindParam(3, $dates);
-
-            $stmt->bindParam(4, $telephone);
-
-            $stmt->bindParam(5, $email);
-
-            $stmt->bindParam(6, $passwords);
-            
-            $stmt->bindParam(7, $optionsRadios);
-
-            $stmt->bindParam(8, $id);
-
-            $stmt->bindParam(8, $dateUpdate);
-
-            $stmt->bindParam(9, $heureUpdate);
-
-            $stmt->execute();        
 
             $data["code"]  = 200;
 
