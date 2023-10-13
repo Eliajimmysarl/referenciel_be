@@ -1,11 +1,5 @@
 <?php
 
-   $applicationId=$json_decode->application_id;
-
-   $nom=$json_decode->nom; 
-
-   $descriptions=$json_decode->descriptions;
-
    try
       {
          $dbh = new PDO('mysql:host=localhost;dbname='.$db_referenciel, $user, $pass);
@@ -33,7 +27,7 @@
             {
                $datas["code"]  = 400;
       
-               $datas['token'][]="Ressource not found";
+               $datas['entite'][]="Ressource not found";
             }
                
          echo json_encode($datas);
