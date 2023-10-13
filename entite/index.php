@@ -77,9 +77,12 @@
                 }
             else if($methode=='GET')
                 {
-                
+                    $applicationId=$json_decode->application_id;
+
+                     if(isSet($applicationId))
+                    {
                         require_once("recuperation_par_application.php");
-                
+                    }
                 }  
             else if($methode=='PUT')
                 {
