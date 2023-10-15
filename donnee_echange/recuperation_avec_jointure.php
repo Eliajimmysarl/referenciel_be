@@ -17,13 +17,13 @@
       {
          $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
 
-         $stmt = $dbh->prepare("SELECT donnee_echange.id, donnee_echange.application_id, donnee_echange.entite_id, donnee_echange.composant_id, donnee_echange.nom, applications.id, entite.id, composant.id FROM `donnee_echange` INNER JOIN applications ON donnee_echange.application_id=applications.id INNER JOIN entite ON donnee_echange.entite_id=entite.id INNER JOIN composant ON donnee_echange.composant_id=composant.id WHERE donnee_echange.application_id= ? AND donnee_echange.composant_id= ? AND donnee_echange.entite_id= ? ");
+         $stmt = $dbh->prepare("SELECT donnee_echange.id, donnee_echange.application_id, donnee_echange.entite_id, donnee_echange.composant_id, donnee_echange.nom, donnee_echange.types, donnee_echange.descriptions, applications.id, entite.id, composant.id FROM `donnee_echange` INNER JOIN applications ON donnee_echange.application_id=applications.id INNER JOIN entite ON donnee_echange.entite_id=entite.id INNER JOIN composant ON donnee_echange.composant_id=composant.id WHERE donnee_echange.application_id= ? AND donnee_echange.composant_id= ? AND donnee_echange.entite_id= ? ");
 
          $stmt->bindParam(1, $applicationId);
-                     
-         $stmt->bindParam(2, $entiteId);
 
          $stmt->bindParam(2, $composantId);
+                     
+         $stmt->bindParam(3, $entiteId);
 
          $stmt->execute();
 
@@ -44,7 +44,7 @@
             {
                $datas["code"]  = 400;
       
-               $datas['token'][]="Ressource not found";
+               $datas['donnee_echange'][]="Ressource not found";
             }
                
          echo json_encode($datas);

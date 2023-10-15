@@ -77,9 +77,18 @@
                 }
             else if($methode=='GET')
                 {
-                        
-                            require_once("recuperation_plusieurs.php");
-                      
+                    $applicationId=$json_decode->application_id;
+
+                    $entiteId=$json_decode->entite_id;
+                    
+                    if((isSet($applicationId) AND (isSet($entiteId)))
+                    {
+                        require_once("recuperation_avec_jointure.php");
+                    }
+                    else
+                    {
+                        require_once("recuperation_plusieurs.php");
+                    }
                 }  
             else if($methode=='PUT')
                 {
