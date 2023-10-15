@@ -22,7 +22,7 @@
                      
          $stmt->bindParam(2, $entiteId);
 
-         $stmt->bindParam(2, $composantId);
+         $stmt->bindParam(3, $composantId);
 
          $stmt->execute();
 
@@ -43,7 +43,7 @@
             {
                $datas["code"]  = 400;
       
-               $datas['token'][]="Ressource not found";
+               $datas['api'][]="Ressource not found";
             }
                
          echo json_encode($datas);

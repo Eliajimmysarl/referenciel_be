@@ -77,8 +77,19 @@
                 }
             else if($methode=='GET')
                 {
-                      
-                    require_once("recuperation_plusieurs.php");
+                    $composantId=$json_decode->composant_id;
+
+                    $applicationId=$json_decode->application_id;
+                    
+                    if((isSet( $composantId)) AND (isSet($applicationId)))
+                        {
+                            require_once("recuperation_avec_jointure.php");
+                        }
+                        else
+                        {
+                            require_once("recuperation_plusieurs.php");
+                        }
+                    
                     
                 }  
             else if($methode=='PUT')

@@ -81,7 +81,7 @@
 
                     $entiteId=$json_decode->entite_id;
                     
-                    if((isSet($applicationId) AND (isSet($entiteId)))
+                    if((isSet($applicationId)) AND (isSet($entiteId)))
                     {
                         require_once("recuperation_avec_jointure.php");
                     }
