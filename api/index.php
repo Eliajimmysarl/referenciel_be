@@ -85,7 +85,7 @@
                         {
                             require_once("recuperation_avec_jointure.php");
                         }
-                        else
+                    else
                         {
                             require_once("recuperation_plusieurs.php");
                         }

@@ -25,7 +25,7 @@
       {
          $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
 
-         $stmt = $dbh->prepare("SELECT donnee_persistante.id, donnee_persistante.application_id, donnee_persistante.entite_id,donnee_persistante.nom, applications.id, entite.id FROM `donnee_persistante` INNER JOIN applications ON donnee_persistante.application_id=applications.id INNER JOIN entite ON donnee_persistante.entite_id=entite.id  WHERE donnee_persistante.application_id= ? AND donnee_persistante.entite_id= ? ");
+         $stmt = $dbh->prepare("SELECT donnee_persistante.id, donnee_persistante.application_id, donnee_persistante.entite_id, donnee_persistante.nom, donnee_persistante.types, donnee_persistante.taille, donnee_persistante.defaut, donnee_persistante.valeur, donnee_persistante.indexe, donnee_persistante.cle_primaire, donnee_persistante.descriptions, applications.id, applications.nom AS application_nom, entite.id, entite.nom AS entite_nom FROM `donnee_persistante` INNER JOIN applications ON donnee_persistante.application_id=applications.id INNER JOIN entite ON donnee_persistante.entite_id=entite.id  WHERE donnee_persistante.application_id= ? AND donnee_persistante.entite_id= ? ");
 
          $stmt->bindParam(1, $applicationId);
                      
