@@ -85,7 +85,11 @@
                         {
                             require_once("recuperation_avec_jointure.php");
                         }
-                        else
+                    else if(isSet($entiteId)) 
+                        {
+                            require_once("recuperation_par_entite.php");
+                        }
+                    else
                         {
                             require_once("recuperation_plusieurs.php");
                         }
