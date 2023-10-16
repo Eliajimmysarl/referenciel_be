@@ -80,10 +80,16 @@
                     $applicationId=$json_decode->application_id;
 
                     $entiteId=$json_decode->entite_id;
+
+                    $couche=$json_decode->couche;
                     
                     if((isSet($applicationId)) AND (isSet($entiteId)))
                         {
                             require_once("recuperation_avec_jointure.php");
+                        }
+                    else if(isSet($couche))
+                        {
+                            require_once("recuperation_par_couche.php");
                         }
                     else
                         {
