@@ -2,24 +2,7 @@
 
    $applicationId=$json_decode->application_id;
 
-   $entiteId=$json_decode->entite_id; 
-
-   $nom=$json_decode->nom; 
-
-   $types=$json_decode->types; 
-
-   $taille=$json_decode->taille; 
-
-   $defaut=$json_decode->defaut;
-
-   $valeur=$json_decode->valeur;
-
-   $indexe=$json_decode->indexe;
-
-   $clePrimaire=$json_decode->cle_primaire;
-
-   $descriptions=$json_decode->descriptions;
-
+   $entiteId=$json_decode->entite_id
 
    try
       {
