@@ -82,6 +82,8 @@
                     $entiteId=$json_decode->entite_id;
 
                     $couche=$json_decode->couche;
+
+                    $plateforme=$json_decode->plateforme;
                     
                     if((isSet($applicationId)) AND (isSet($entiteId)))
                         {
@@ -90,6 +92,10 @@
                     else if(isSet($couche))
                         {
                             require_once("recuperation_par_couche.php");
+                        }
+                    else if(isSet($plateforme))
+                        {
+                            require_once("recuperation_par_plateforme.php");
                         }
                     else
                         {
