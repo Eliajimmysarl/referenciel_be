@@ -89,6 +89,10 @@
                         {
                             require_once("recuperation_par_entite.php");
                         }
+                    else if(isSet($applicationId)) 
+                        {
+                            require_once("recuperation_par_application.php");
+                        }
                     else
                         {
                             require_once("recuperation_plusieurs.php");
