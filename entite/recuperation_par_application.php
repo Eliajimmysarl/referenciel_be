@@ -16,7 +16,7 @@
             
          if($nombreLigne > 0)
             { 
-               while($resultat=$stmt->fetchAll(PDO::FETCH_ASSOC))  
+               while($resultat=$stmt->fetch(PDO::FETCH_ASSOC))  
                   {
                      $datas["code"]  = 200;
 
