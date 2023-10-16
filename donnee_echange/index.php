@@ -80,10 +80,16 @@
                     $applicationId=$json_decode->application_id;
 
                     $entiteId=$json_decode->entite_id;
+
+                    $composantId=$json_decode->composant_id;
                     
                     if((isSet($applicationId))  AND (isSet($entiteId)))
                         {
                             require_once("recuperation_avec_jointure.php");
+                        }
+                    else if(isSet($composantId)) 
+                        {
+                            require_once("recuperation_par_composant.php");
                         }
                     else
                         {
