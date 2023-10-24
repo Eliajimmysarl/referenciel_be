@@ -19,12 +19,10 @@
       {
          $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
 
-         $stmt = $dbh->prepare("SELECT composant.id AS id_composant, composant.application_id, composant.couche, composant.plateforme, composant.nom, composant.descriptions, composant.url_code, composant.entite_id, composant.nom, applications.nom AS application_nom,  entite.nom AS entite_nom FROM `composant` INNER JOIN applications ON composant.application_id=applications.id INNER JOIN entite ON composant.entite_id=entite.id WHERE composant.application_id= ? AND composant.entite_id= ? ");
+         $stmt = $dbh->prepare("SELECT composant.id AS id_composant, composant.application_id, composant.couche, composant.plateforme, composant.nom, composant.descriptions, composant.url_code, composant.entite_id, composant.nom,  applications.nom AS application_nom,  entite.nom AS entite_nom FROM `composant` INNER JOIN applications ON composant.application_id=applications.id INNER JOIN entite ON composant.entite_id=entite.id WHERE composant.application_id= ? ");
 
          $stmt->bindParam(1, $applicationId); 
-                     
-         $stmt->bindParam(2, $entiteId);
-
+      
          $stmt->execute();
 
          $datas = array();

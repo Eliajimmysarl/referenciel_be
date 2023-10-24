@@ -77,8 +77,26 @@
                 }
             else if($methode=='GET')
                 {
+                    $entiteId=$json_decode->entite_id;
+
+                    $applicationId=$json_decode->application_id;
                     
+                    if((isSet($entiteId)) AND (isSet($applicationId)))
+                        {
+                            require_once("recuperation_avec_jointure.php");
+                        }
+                    else if(isSet($entiteId)) 
+                        {
+                            require_once("recuperation_par_entite.php");
+                        }
+                    else if(isSet($applicationId)) 
+                        {
+                            require_once("recuperation_par_application.php");
+                        }
+                    else
+                        {
                             require_once("recuperation_plusieurs.php");
+                        }
                     
                 }  
             else if($methode=='PUT')

@@ -32,9 +32,9 @@
 
             $stmt->bindParam(1, $applicationId);
 
-            $stmt->bindParam(3, $composantId);
+            $stmt->bindParam(2, $composantId);
 
-            $stmt->bindParam(2, $entiteId);
+            $stmt->bindParam(3, $entiteId);
 
             $stmt->bindParam(4, $nom);
 

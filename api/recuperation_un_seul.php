@@ -4,7 +4,7 @@
         {
             $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
             
-            $stmt = $dbh->prepare("SELECT *FROM api WHERE id = :id");
+            $stmt = $dbh->prepare("SELECT api.id, api.application_id, api.entite_id, api.composant_id, api.methode, api.uri, applications.nom AS application_nom, entite.nom AS entite_nom, composant.nom AS composant_nom FROM `api` INNER JOIN applications ON api.application_id=applications.id INNER JOIN entite ON api.entite_id=entite.id INNER JOIN composant ON api.composant_id=composant.id   WHERE api.id = :id");
             
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             

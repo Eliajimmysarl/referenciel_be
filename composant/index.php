@@ -77,8 +77,38 @@
                 }
             else if($methode=='GET')
                 {
-                
-                    require_once("recuperation_plusieurs.php");
+                    $applicationId=$json_decode->application_id;
+
+                    $entiteId=$json_decode->entite_id;
+
+                    $couche=$json_decode->couche;
+
+                    $plateforme=$json_decode->plateforme;
+                    
+                    if((isSet($applicationId)) AND (isSet($entiteId)))
+                        {
+                            require_once("recuperation_avec_jointure.php");
+                        }
+                    else if(isSet($couche))
+                        {
+                            require_once("recuperation_par_couche.php");
+                        }
+                    else if(isSet($plateforme))
+                        {
+                            require_once("recuperation_par_plateforme.php");
+                        }
+                    else if(isSet($entiteId))
+                        {
+                            require_once("recuperation_par_entite.php");
+                        }
+                    else if(isSet($applicationId))
+                        {
+                            require_once("recuperation_par_application.php");
+                        }
+                    else
+                        {
+                            require_once("recuperation_plusieurs.php");
+                        }
                 
                 }  
             else if($methode=='PUT')

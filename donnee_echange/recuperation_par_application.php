@@ -17,14 +17,10 @@
       {
          $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
 
-         $stmt = $dbh->prepare("SELECT donnee_echange.id AS id_donnee_echange, donnee_echange.application_id, donnee_echange.entite_id, donnee_echange.composant_id, donnee_echange.nom, donnee_echange.types, donnee_echange.descriptions, applications.nom AS application_nom, entite.id, entite.nom AS entite_nom, composant.id, composant.nom AS composant_nom FROM `donnee_echange` INNER JOIN applications ON donnee_echange.application_id=applications.id INNER JOIN entite ON donnee_echange.entite_id=entite.id INNER JOIN composant ON donnee_echange.composant_id=composant.id  WHERE donnee_echange.application_id= ? AND donnee_echange.composant_id= ? AND donnee_echange.entite_id= ? ");
+         $stmt = $dbh->prepare("SELECT donnee_echange.id AS id_donnee_echange, donnee_echange.application_id, donnee_echange.entite_id, donnee_echange.composant_id, donnee_echange.nom, donnee_echange.types, donnee_echange.descriptions, applications.nom AS application_nom, entite.id, entite.nom AS entite_nom, composant.id, composant.nom AS composant_nom FROM `donnee_echange` INNER JOIN applications ON donnee_echange.application_id=applications.id INNER JOIN entite ON donnee_echange.entite_id=entite.id INNER JOIN composant ON donnee_echange.composant_id=composant.id  WHERE donnee_echange.application_id= ? ");
         
          $stmt->bindParam(1, $applicationId);
-
-         $stmt->bindParam(2, $composantId);
                      
-         $stmt->bindParam(3, $entiteId);
-
          $stmt->execute();
 
          $datas = array();
