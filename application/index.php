@@ -1,11 +1,15 @@
 <?php
+    header("Access-Control-Allow-Origin: *");
+
+    header("Access-Control-Allow-Headers: *");
+
     include('../../../connect/connect.php');
 
     include('../../../module/curl.php');  
 
     $headers = apache_request_headers();
     
-    $token=$headers['Authorisation'];
+    $token=$headers['Authorisation'];  
 
     $myjson=file_get_contents('php://input');
 
