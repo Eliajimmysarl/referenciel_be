@@ -1,20 +1,14 @@
 <?php
 
-    $myjson=file_get_contents('php://input');
-
-    $json_decode= json_decode($myjson);
-
     $userId=$json_decode->user_id;
 
     $composantId=$json_decode->composant_id; 
 
-    $statut=$json_decode->statut; 
-
-    $remarque=$json_decode->remarque; 
-
     $dateDebut=$json_decode->date_debut; 
 
     $dateFin=$json_decode->date_fin; 
+
+    $remarque=$json_decode->remarque; 
 
     $date_creation = date("Y-m-d");
 
@@ -27,28 +21,25 @@
     try {
             $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
 
-            $stmt = $dbh->prepare("INSERT INTO planification (user_id, composant_id, statut, remarque, date_debut, date_fin, date_creation, date_update, heure_creation, heure_update) VALUES (?,?,?,?,?,?,?,?,?,?)");
+            $stmt = $dbh->prepare("INSERT INTO planification (user_id, composant_id, date_debut, date_fin, remarque, date_creation, date_update, heure_creation, heure_update) VALUES (?,?,?,?,?,?,?,?,?)");
 
             $stmt->bindParam(1, $userId);
 
             $stmt->bindParam(2, $composantId);
 
-            $stmt->bindParam(3, $statut);
+            $stmt->bindParam(3, $dateDebut);
 
-            $stmt->bindParam(4,  $remarque);
+            $stmt->bindParam(4, $dateFin);
 
-            $stmt->bindParam(5, $dateDebut);
+            $stmt->bindParam(5,  $remarque);
 
-            $stmt->bindParam(6, $dateFin);
+            $stmt->bindParam(6, $date_creation);
 
-            $stmt->bindParam(7, $date_creation);
+            $stmt->bindParam(7, $date_update);
 
-            $stmt->bindParam(8, $date_update);
+            $stmt->bindParam(8, $heure_creation);
 
-            $stmt->bindParam(9, $heure_creation);
-
-            $stmt->bindParam(10, $heure_update);
-
+            $stmt->bindParam(9, $heure_update);
 
             $stmt->execute();
 
@@ -57,6 +48,16 @@
             if($last==0)
                 {
                     $data["code"]  = 400;
+
+                    $data["user_id"]  = "$userId";
+
+                    $data["composant_id"]  = "$composantId";
+
+                    $data["date_debut"]  = "$dateDebut";
+
+                    $data["date_fin"]  = "$dateFin";
+
+                    $data["remarque"]  = "$remarque";
 
                     $data["message"]  = "Ressource not created";
                 }
@@ -70,15 +71,13 @@
 
                     $data["composant_id"]  = "$composantId";
 
-                    $data["statut"]  = "$statut";
-
-                    $data["remarque"]  = "$remarque";
-
                     $data["date_debut"]  = "$dateDebut";
 
                     $data["date_fin"]  = "$dateFin";
 
-                    $data["reponse"]  = "Le test $composant_id $user_id avec l'id $id est cree";  
+                    $data["remarque"]  = "$remarque";
+
+                    $data["reponse"]  = "Le test $application_id $nom avec l'id $id est cree";  
                 }
             
             echo json_encode( $data );

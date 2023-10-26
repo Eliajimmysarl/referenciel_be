@@ -1,9 +1,5 @@
 <?php
 
-$myjson=file_get_contents('php://input');
-
-    $json_decode= json_decode($myjson);
-
     $userId=$json_decode->user_id;
 
     $composantId=$json_decode->composant_id; 
