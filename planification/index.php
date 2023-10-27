@@ -9,6 +9,9 @@
 
     $myjson=file_get_contents('php://input');
 
+    //Ecrire dans un fichier php les données d'echange d'entrée envoyé par les clients
+    file_put_contents('./json.json', $myjson);
+
     $json_decode= json_decode($myjson);
 
     $uri = $authority."/token/";
