@@ -4,6 +4,8 @@
 
     $composantId=$json_decode->composant_id; 
 
+    $applicationId=$json_decode->application_id;
+
     $dateDebut=$json_decode->date_debut; 
 
     $dateFin=$json_decode->date_fin; 
@@ -21,25 +23,27 @@
     try {
             $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
 
-            $stmt = $dbh->prepare("INSERT INTO planification (user_id, composant_id, date_debut, date_fin, remarque, date_creation, date_update, heure_creation, heure_update) VALUES (?,?,?,?,?,?,?,?,?)");
+            $stmt = $dbh->prepare("INSERT INTO planification (user_id, composant_id, application_id, date_debut, date_fin, remarque, date_creation, date_update, heure_creation, heure_update) VALUES (?,?,?,?,?,?,?,?,?,?)");
 
             $stmt->bindParam(1, $userId);
 
             $stmt->bindParam(2, $composantId);
 
-            $stmt->bindParam(3, $dateDebut);
+            $stmt->bindParam(3, $applicationId);
 
-            $stmt->bindParam(4, $dateFin);
+            $stmt->bindParam(4, $dateDebut);
 
-            $stmt->bindParam(5,  $remarque);
+            $stmt->bindParam(5, $dateFin);
 
-            $stmt->bindParam(6, $date_creation);
+            $stmt->bindParam(6,  $remarque);
 
-            $stmt->bindParam(7, $date_update);
+            $stmt->bindParam(7, $date_creation);
 
-            $stmt->bindParam(8, $heure_creation);
+            $stmt->bindParam(8, $date_update);
 
-            $stmt->bindParam(9, $heure_update);
+            $stmt->bindParam(9, $heure_creation);
+
+            $stmt->bindParam(10, $heure_update);
 
             $stmt->execute();
 
@@ -52,6 +56,8 @@
                     $data["user_id"]  = "$userId";
 
                     $data["composant_id"]  = "$composantId";
+
+                    $data["application_id"]  = "$applicationId";
 
                     $data["date_debut"]  = "$dateDebut";
 
@@ -71,13 +77,16 @@
 
                     $data["composant_id"]  = "$composantId";
 
+                    $data["application_id"]  = "$applicationId";
+
+
                     $data["date_debut"]  = "$dateDebut";
 
                     $data["date_fin"]  = "$dateFin";
 
                     $data["remarque"]  = "$remarque";
 
-                    $data["reponse"]  = "Le test $application_id $nom avec l'id $id est cree";  
+                    $data["reponse"]  = "Le test $applicationId $nom avec l'id $id est cree";  
                 }
             
             echo json_encode( $data );
