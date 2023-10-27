@@ -72,6 +72,8 @@
                     $userId=$json_decode->user_id;
 
                     $statut=$json_decode->statut;
+
+                    $applicationId=$json_decode->application_id;
                     
                     if((isSet($userId)) AND (isSet($statut)))
                         {
@@ -84,6 +86,10 @@
                     else if(isSet($statut))
                         {
                             require_once("recuperation_plusieurs_statut.php");
+                        }
+                    else if(isSet($applicationId))
+                        {
+                            require_once("recuperation_par_application.php");
                         }
                     else
                         {
