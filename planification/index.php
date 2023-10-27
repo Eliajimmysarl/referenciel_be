@@ -90,7 +90,7 @@
                         {
                             require_once("recuperation_plusieurs_statut.php");
                         }
-                    else if((isSet($applicationId)) AND (isSet($userId)))
+                    else if((isSet($userId)) AND (isSet($applicationId)))
                         {
                             require_once("recuperation_par_application.php");
                         }
