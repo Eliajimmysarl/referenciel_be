@@ -4,6 +4,8 @@
 
     $composantId=$json_decode->composant_id; 
 
+    $statut=$json_decode->statut;
+
     $applicationId=$json_decode->application_id;
 
     $dateDebut=$json_decode->date_debut; 
