@@ -4,9 +4,12 @@
       {
          $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
 
-         $stmt = $dbh->prepare("SELECT planification.user_id, planification.composant_id, planification.application_id, planification.statut, planification.remarque, planification.date_debut, planification.date_fin, composant.nom, composant.id FROM `planification` INNER JOIN composant ON planification.composant_id=composant.id WHERE planification.statut= ? ");
+         $stmt = $dbh->prepare("SELECT planification.user_id, planification.composant_id, planification.application_id, planification.statut, planification.remarque, planification.date_debut, planification.date_fin, composant.nom, composant.id FROM `planification` INNER JOIN composant ON planification.composant_id=composant.id WHERE planification.statut= ? AND planification.application_id= ? ");
 
          $stmt->bindParam(1, $statut);
+
+         $stmt->bindParam(2, $applicationId); 
+         
 
          $stmt->execute();
 
