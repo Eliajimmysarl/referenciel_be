@@ -54,6 +54,8 @@
 
             $data["user_id"]  = "$userId";
 
+            $data["application_id"]  = "$applicationId";
+
             $data["composant_id"]  = "$composantId";
 
             $data["statut"]  = "$statut";
