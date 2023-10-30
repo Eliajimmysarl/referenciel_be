@@ -14,7 +14,7 @@
 
     $dateUpdate = date("Y-m-d");
 
-    $dateUpdate = date("Y-m-d");   
+    $heureUpdate = date("H:i:s");      
 
     try {
             $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
