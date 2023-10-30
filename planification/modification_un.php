@@ -2,6 +2,8 @@
 
     $userId=$json_decode->user_id;
 
+    $applicationId=$json_decode->application_id; 
+
     $composantId=$json_decode->composant_id; 
 
     $statut=$json_decode->statut; 
@@ -14,30 +16,32 @@
 
     $dateUpdate = date("Y-m-d");
 
-    $heureUpdate = date("H:i:s");      
+    $heureUpdate = date("H:i:s");        
 
     try {
             $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
 
-            $stmt = $dbh->prepare("UPDATE planification SET user_id=?, composant_id=?, statut=?, remarque=?, date_debut=?, date_fin=?,  date_update=?, heure_update=? WHERE id=?");
+            $stmt = $dbh->prepare("UPDATE planification SET user_id=?, application_id=?, composant_id=?, statut=?, remarque=?, date_debut=?, date_fin=?,  date_update=?, heure_update=? WHERE id=?");
             
             $stmt->bindParam(1, $userId);
+
+            $stmt->bindParam(2, $applicationId);
  
-            $stmt->bindParam(2, $composantId);
+            $stmt->bindParam(3, $composantId);
 
-            $stmt->bindParam(3, $statut);
+            $stmt->bindParam(4, $statut);
 
-            $stmt->bindParam(4, $remarque);
+            $stmt->bindParam(5, $remarque);
 
-            $stmt->bindParam(5, $dateDebut);
+            $stmt->bindParam(6, $dateDebut);
 
-            $stmt->bindParam(6, $dateFin);
+            $stmt->bindParam(7, $dateFin);
 
-            $stmt->bindParam(7, $date_update);
+            $stmt->bindParam(8, $date_update);
 
-            $stmt->bindParam(8, $heure_update);
+            $stmt->bindParam(9, $heure_update);
 
-            $stmt->bindParam(9, $id);
+            $stmt->bindParam(10, $id);
 
             $stmt->execute();
     
