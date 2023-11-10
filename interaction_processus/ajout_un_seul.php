@@ -5,11 +5,7 @@
     $json_decode= json_decode($myjson);
     
     
-    $applicationId=$json_decode->application_id;
-
-    $nom=$json_decode->nom; 
-
-    $descriptions=$json_decode->descriptions; 
+    $processusId=$json_decode->processus_id;
     
     $dateCreation = date("Y-m-d");
 
@@ -22,21 +18,17 @@
     try {
             $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
 
-            $stmt = $dbh->prepare("INSERT INTO entite (application_id, nom, descriptions, date_creation, date_update, heure_creation, heure_update) VALUES (?,?,?,?,?,?,?)");
+            $stmt = $dbh->prepare("INSERT INTO interaction_processus (processus_id, date_creation, date_update, heure_creation, heure_update) VALUES (?,?,?,?,?)");
 
-            $stmt->bindParam(1, $applicationId);
+            $stmt->bindParam(1, $processusId);
 
-            $stmt->bindParam(2, $nom);
+            $stmt->bindParam(2, $dateCreation);
 
-            $stmt->bindParam(3, $descriptions);
+            $stmt->bindParam(3, $dateUpdate);
 
-            $stmt->bindParam(4, $dateCreation);
+            $stmt->bindParam(4, $heureCreation);
 
-            $stmt->bindParam(5, $dateUpdate);
-
-            $stmt->bindParam(6, $heureCreation);
-
-            $stmt->bindParam(7, $heureUpdate);
+            $stmt->bindParam(5, $heureUpdate);
 
               
 
@@ -56,11 +48,7 @@
 
                     $data["id"]  = "$last";
 
-                    $data["application_id"]  = "$applicationId";
-
-                    $data["nom"]  = "$nom";
-
-                    $data["descriptions"]  = "$descriptions";
+                    $data["processus_id"]  = "$processusId";
 
                     $data["date_creation"]  = "$dateCreation";
 
@@ -70,7 +58,7 @@
 
                     $data["heure_update"]  = "$heureUpdate";
 
-                    $data["reponse"]  = "Le test $applicationId $nom avec l'id $id est cree";  
+                    $data["reponse"]  = "Le test $processusId  avec l'id $id est cree";  
                 }
             
             echo json_encode( $data );
