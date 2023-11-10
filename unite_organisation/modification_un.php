@@ -13,7 +13,7 @@ $heureUpdate = date("H:i:s");
     try {
             $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass); 
 
-            $stmt = $dbh->prepare("UPDATE entite SET application_id=?, nom=?,  descriptions=?, date_update=?,  heure_update=? WHERE id=?");
+            $stmt = $dbh->prepare("UPDATE unite_organisation SET application_id=?, nom=?,  descriptions=?, date_update=?,  heure_update=? WHERE id=?");
 
             $stmt->bindParam(1, $applicationId);
 
