@@ -5,9 +5,9 @@
     $json_decode= json_decode($myjson);
     
     
-    $applicationId=$json_decode->application_id;
+    $composantEntiteId=$json_decode->composant_entite_id;
 
-    $nom=$json_decode->nom; 
+    $entiteId=$json_decode->entite_id; 
 
     $descriptions=$json_decode->descriptions; 
     
@@ -22,11 +22,11 @@
     try {
             $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
 
-            $stmt = $dbh->prepare("INSERT INTO entite (application_id, nom, descriptions, date_creation, date_update, heure_creation, heure_update) VALUES (?,?,?,?,?,?,?)");
+            $stmt = $dbh->prepare("INSERT INTO interaction_entite (composant_entite_id, entite_id, descriptions, date_creation, date_update, heure_creation, heure_update) VALUES (?,?,?,?,?,?,?)");
 
-            $stmt->bindParam(1, $applicationId);
+            $stmt->bindParam(1, $composantEntiteId);
 
-            $stmt->bindParam(2, $nom);
+            $stmt->bindParam(2, $entiteId);
 
             $stmt->bindParam(3, $descriptions);
 
@@ -56,9 +56,9 @@
 
                     $data["id"]  = "$last";
 
-                    $data["application_id"]  = "$applicationId";
+                    $data["composant_entite_id"]  = "$composantEntiteId";
 
-                    $data["nom"]  = "$nom";
+                    $data["entite_id"]  = "$entiteId";
 
                     $data["descriptions"]  = "$descriptions";
 
@@ -70,7 +70,7 @@
 
                     $data["heure_update"]  = "$heureUpdate";
 
-                    $data["reponse"]  = "Le test $applicationId $nom avec l'id $id est cree";  
+                    $data["reponse"]  = "Le test $entiteId $entiteId avec l'id $id est cree";  
                 }
             
             echo json_encode( $data );
