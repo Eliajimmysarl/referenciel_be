@@ -1,8 +1,10 @@
 <?php
 
-$applicationId=$json_decode->application_id;
+$processusId=$json_decode->processus_id;
 
-$nom=$json_decode->nom; 
+$activite=$json_decode->activite; 
+
+$lienCode=$json_decode->lien_code;
 
 $descriptions=$json_decode->descriptions; 
 
@@ -13,19 +15,21 @@ $heureUpdate = date("H:i:s");
     try {
             $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass); 
 
-            $stmt = $dbh->prepare("UPDATE entite SET application_id=?, nom=?,  descriptions=?, date_update=?,  heure_update=? WHERE id=?");
+            $stmt = $dbh->prepare("UPDATE composant_processus SET processus_id=?, activite=?, lien_code=?, descriptions=?, date_update=?,  heure_update=? WHERE id=?");
 
-            $stmt->bindParam(1, $applicationId);
+            $stmt->bindParam(1, $processusId);
 
-            $stmt->bindParam(2, $nom);
+            $stmt->bindParam(2, $activite);
 
-            $stmt->bindParam(3, $descriptions);
+            $stmt->bindParam(3, $lienCode);
 
-            $stmt->bindParam(4, $dateUpdate);
+            $stmt->bindParam(4, $descriptions);
 
-            $stmt->bindParam(5, $heureUpdate);
+            $stmt->bindParam(5, $dateUpdate);
 
-            $stmt->bindParam(6, $id);
+            $stmt->bindParam(6, $heureUpdate);
+
+            $stmt->bindParam(7, $id);
 
             $stmt->execute();
 
@@ -34,9 +38,11 @@ $heureUpdate = date("H:i:s");
 
             $data["id"]  = "$id";
 
-            $data["application_id"]  = "$applicationId";
+            $data["processus_id"]  = "$processusId";
 
-            $data["nom"]  = "$nom";
+            $data["activite"]  = "$activite";
+
+            $data["lien_code"]  = "$lienCode";
 
             $data["descriptions"]  = "$descriptions";
 

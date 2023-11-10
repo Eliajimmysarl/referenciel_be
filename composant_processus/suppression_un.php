@@ -4,13 +4,13 @@
     
             $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
 
-            $stmt = $dbh->prepare("DELETE FROM entite WHERE id = :id");
+            $stmt = $dbh->prepare("DELETE FROM composant_processus WHERE id = :id");
 
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
             $stmt->execute();
 
-            $stmt = $dbh->prepare("SELECT *FROM entite  ORDER BY id");
+            $stmt = $dbh->prepare("SELECT *FROM composant_processus ORDER BY id");
                     
             $stmt->execute();
                     
@@ -20,7 +20,7 @@
                         {
                             $datas["code"]  = 200;
 
-                            $datas['entite'][]=$resultat;
+                            $datas['composant_processus'][]=$resultat;
                         }
                                 
             echo json_encode( $datas);

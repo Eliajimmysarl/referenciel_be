@@ -4,10 +4,11 @@
 
     $json_decode= json_decode($myjson);
     
-    
-    $applicationId=$json_decode->application_id;
+    $processusId=$json_decode->processus_id;
 
-    $nom=$json_decode->nom; 
+    $activite=$json_decode->activite; 
+
+    $lienCode=$json_decode->lien_code;
 
     $descriptions=$json_decode->descriptions; 
     
@@ -22,23 +23,23 @@
     try {
             $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
 
-            $stmt = $dbh->prepare("INSERT INTO entite (application_id, nom, descriptions, date_creation, date_update, heure_creation, heure_update) VALUES (?,?,?,?,?,?,?)");
+            $stmt = $dbh->prepare("INSERT INTO composant_processus (processus_id, activite, lien_code, descriptions, date_creation, date_update, heure_creation, heure_update) VALUES (?,?,?,?,?,?,?,?)");
 
-            $stmt->bindParam(1, $applicationId);
+            $stmt->bindParam(1, $processusId);
 
-            $stmt->bindParam(2, $nom);
+            $stmt->bindParam(2, $activite);
 
-            $stmt->bindParam(3, $descriptions);
+            $stmt->bindParam(3, $lienCode);
 
-            $stmt->bindParam(4, $dateCreation);
+            $stmt->bindParam(4, $descriptions);
 
-            $stmt->bindParam(5, $dateUpdate);
+            $stmt->bindParam(5, $dateCreation);
 
-            $stmt->bindParam(6, $heureCreation);
+            $stmt->bindParam(6, $dateUpdate);
 
-            $stmt->bindParam(7, $heureUpdate);
+            $stmt->bindParam(7, $heureCreation);
 
-              
+            $stmt->bindParam(8, $heureUpdate);
 
             $stmt->execute();
 
@@ -56,9 +57,11 @@
 
                     $data["id"]  = "$last";
 
-                    $data["application_id"]  = "$applicationId";
+                    $data["processus_id"]  = "$processusId";
 
-                    $data["nom"]  = "$nom";
+                    $data["activite"]  = "$activite";
+
+                    $data["lien_code"]  = "$lienCode";
 
                     $data["descriptions"]  = "$descriptions";
 
@@ -70,7 +73,7 @@
 
                     $data["heure_update"]  = "$heureUpdate";
 
-                    $data["reponse"]  = "Le test $applicationId $nom avec l'id $id est cree";  
+                    $data["reponse"]  = "Le test $processusId $activite avec l'id $id est cree";  
                 }
             
             echo json_encode( $data );
