@@ -4,8 +4,8 @@
         {
             $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
             
-            $stmt = $dbh->prepare("SELECT entite.id, entite.nom AS entite_nom, entite.application_id, entite.descriptions, applications.nom AS applications_nom FROM `entite` INNER JOIN applications ON entite.application_id=applications.id  WHERE entite.id = :id");
-           
+            $stmt = $dbh->prepare("SELECT roles.id AS id_roles, roles.application_id, roles.acteur_id, roles.application_id, roles.unite_organisation_id, roles.nom, roles.descriptions, applications.nom AS application_nom, unite_organisation.id, unite_organisation.nom AS unite_organisation_nom, acteur.id, acteur.nom AS acteur_nom FROM `roles` INNER JOIN applications ON roles.application_id=applications.id INNER JOIN acteur ON roles.acteur_id=acteur.id INNER JOIN unite_organisation ON roles.unite_organisation_id=unite_organisation.id WHERE entite.id = :id");
+
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             
             $stmt->execute();
