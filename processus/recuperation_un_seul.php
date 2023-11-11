@@ -4,8 +4,8 @@
         {
             $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
             
-            $stmt = $dbh->prepare("SELECT entite.id, entite.nom AS entite_nom, entite.application_id, entite.descriptions, applications.nom AS applications_nom FROM `entite` INNER JOIN applications ON entite.application_id=applications.id  WHERE entite.id = :id");
-           
+            $stmt = $dbh->prepare(" SELECT processus.id, processus.nom AS processus_nom, processus.application_id, processus.descriptions, applications.nom AS applications_nom FROM `processus` INNER JOIN applications ON processus.application_id=applications.id WHERE processus.id = :id");
+
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             
             $stmt->execute();
