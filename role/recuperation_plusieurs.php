@@ -8,7 +8,7 @@
         $stmt->execute();
 
         $datas = array();
-
+  
         $nombreLigne = $stmt->rowCount();
         
         if($nombreLigne > 0)
