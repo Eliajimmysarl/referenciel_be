@@ -4,8 +4,8 @@
         {
             $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
             
-            $stmt = $dbh->prepare("SELECT entite.id, entite.nom AS entite_nom, entite.application_id, entite.descriptions, applications.nom AS applications_nom FROM `entite` INNER JOIN applications ON entite.application_id=applications.id  WHERE entite.id = :id");
-           
+            $stmt = $dbh->prepare( "SELECT composant_processus.id, composant_processus.activite, composant_processus.lien_code, composant_processus.descriptions, composant_processus.processus_id, processus.nom AS processus_nom FROM `composant_processus` INNER JOIN processus ON composant_processus.processus_id=processus.id WHERE composant_processus.id = :id ");
+
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             
             $stmt->execute();
@@ -20,14 +20,14 @@
                         {
                             $datas["code"]  = 200;
 
-                            $datas['entite'][]=$resultat;
+                            $datas['composant_processus'][]=$resultat;
                         }
                 }
             else
                 {
                     $datas["code"]  = 400;
         
-                    $datas['token'][]="Ressource not found";
+                    $datas['composant_processus'][]="Ressource not found";
                 }
                 
             echo json_encode($datas);
