@@ -16,5 +16,19 @@ RewriteRule ^donnee_persistante/([0-9]+)$ donnee_persistante/index.php?id=$1 [L]
 
 RewriteRule ^planification/([0-9]+)$ planification/index.php?id=$1 [L]
 
+RewriteRule ^acteur/([0-9]+)$ acteur/index.php?id=$1 [L]
+
+RewriteRule ^role/([0-9]+)$ role/index.php?id=$1 [L]
+
+RewriteRule ^composant_processus/([0-9]+)$ composant_processus/index.php?id=$1 [L]
+
+RewriteRule ^processus/([0-9]+)$ processus/index.php?id=$1 [L]
+
+RewriteRule ^interaction_processus/([0-9]+)$ interaction_processus/index.php?id=$1 [L]
+
+RewriteRule ^interaction_entite/([0-9]+)$ interaction_entite/index.php?id=$1 [L]
+
+RewriteRule ^unite_organisation/([0-9]+)$ unite_organisation/index.php?id=$1 [L]
+
 
 
