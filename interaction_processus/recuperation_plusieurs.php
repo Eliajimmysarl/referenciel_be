@@ -3,7 +3,7 @@
     try {
         $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
 
-        $stmt = $dbh->prepare( "SELECT entite.id, entite.nom AS entite_nom, entite.application_id, entite.descriptions, applications.nom AS applications_nom FROM `entite` INNER JOIN applications ON entite.application_id=applications.id ");
+        $stmt = $dbh->prepare("SELECT interaction_processus.id, interaction_processus.processus_id, processus.nom AS processus_nom FROM `interaction_processus` INNER JOIN processus ON interaction_processus.processus_id=processus.id ");
 
         $stmt->execute();
 
@@ -17,14 +17,14 @@
                     {
                         $datas["code"]  = 200;
                         
-                        $datas['entite'][]=$resultat;
+                        $datas['interaction_processus'][]=$resultat;
                     }
             }
         else
             {
                 $datas["code"]  = 400;
 
-                $datas['entite'][]="Ressource not found";
+                $datas['interaction_processus'][]="Ressource not found";
             }   
         echo json_encode($datas);
         
