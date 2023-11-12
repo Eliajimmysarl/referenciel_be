@@ -82,9 +82,15 @@
                 {
                     $applicationId=$json_decode->application_id;
 
+                    $uniteOrganisationId=$json_decode->unite_organisation_id;
+
                      if(isSet($applicationId))
                         {
                              require_once("recuperation_par_application.php");
+                        }
+                    else if(isSet($uniteOrganisationId))
+                        {
+                             require_once("recuperation_par_unite_organisation.php");
                         }
                     else
                         {
