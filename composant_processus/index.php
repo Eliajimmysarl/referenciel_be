@@ -80,11 +80,11 @@
                 }
             else if($methode=='GET')
                 {
-                    $applicationId=$json_decode->application_id;
+                    $processusId=$json_decode->processus_id;
 
-                     if(isSet($applicationId))
+                     if(isSet($processusId))
                         {
-                             require_once("recuperation_par_application.php");
+                             require_once("recuperation_par_processus.php");  
                         }
                     else
                         {
