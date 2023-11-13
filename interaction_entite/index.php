@@ -82,9 +82,17 @@
                 {
                     $applicationId=$json_decode->application_id;
 
-                     if(isSet($applicationId))
+                    $composantEntiteId=$json_decode->composant_id;
+
+                    $entiteId=$json_decode->entite_id;
+
+                    if(isSet($composantEntiteId)) 
                         {
-                             require_once("recuperation_par_application.php");
+                             require_once("recuperation_par_comopsant_entite.php");
+                        }
+                    else if(isSet($entiteId))
+                        {
+                             require_once("recuperation_par_entite.php");
                         }
                     else
                         {
