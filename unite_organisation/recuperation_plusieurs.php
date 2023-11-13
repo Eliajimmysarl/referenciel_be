@@ -11,20 +11,20 @@
 
         $nombreLigne = $stmt->rowCount();
         
-        if($nombreLigne > 0)
+        if($nombreLigne > 0) 
             { 
                 while($resultat=$stmt->fetch(PDO::FETCH_ASSOC)) 
                     {
                         $datas["code"]  = 200;
                         
-                        $datas['entite'][]=$resultat;
+                        $datas['unite_organisation'][]=$resultat;
                     }
             }
         else
             {
                 $datas["code"]  = 400;
 
-                $datas['entite'][]="Ressource not found";
+                $datas['unite_organisation'][]="Ressource not found";
             }   
         echo json_encode($datas);
         
