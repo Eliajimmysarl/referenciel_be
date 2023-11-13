@@ -1,5 +1,8 @@
 <?php
 
+$applicationId=$json_decode->application_id;
+
+$uniteOrganisationId=$json_decode->unite_organisation_id;
    try
       {
          $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
