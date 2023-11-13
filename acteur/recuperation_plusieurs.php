@@ -3,7 +3,7 @@
     try {
         $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
 
-        $stmt = $dbh->prepare("SELECT acteur.id, acteur.nom AS acteur_nom, acteur.application_id, acteur.types, acteur.descriptions, applications.nom AS applications_nom, unite_organisation.nom AS unite_organisation_nom FROM `acteur` INNER JOIN applications ON acteur.application_id=applications.id INNER JOIN unite_organisation ON acteur.unite_organisation_id=unite_organisation.id ");
+        $stmt = $dbh->prepare("SELECT acteur.id, acteur.nom, acteur.types, acteur.descriptions, applications.nom AS applications_nom, unite_organisation.nom AS unite_organisation_nom FROM `acteur` INNER JOIN applications ON acteur.application_id=applications.id INNER JOIN unite_organisation ON acteur.unite_organisation_id=unite_organisation.id ");
 
         $stmt->execute();
 
@@ -27,7 +27,7 @@
                 $datas['acteur'][]="Ressource not found";
             }   
         echo json_encode($datas);
-        
+          
     }
     catch (PDOException $e) {
             print "Erreur !: " . $e->getMessage() . "<br/>";
