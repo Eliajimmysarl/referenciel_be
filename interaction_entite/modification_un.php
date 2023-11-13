@@ -1,6 +1,6 @@
 <?php
 
-$composantEntiteId=$json_decode->composant_entite_id;
+$composantEntiteId=$json_decode->composant_id;
 
 $entiteId=$json_decode->entite_id; 
 

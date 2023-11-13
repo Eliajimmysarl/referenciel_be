@@ -5,7 +5,7 @@
     $json_decode= json_decode($myjson);
     
     
-    $composantEntiteId=$json_decode->composant_entite_id;
+    $composantEntiteId=$json_decode->composant_id;
 
     $entiteId=$json_decode->entite_id; 
 
