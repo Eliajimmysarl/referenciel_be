@@ -20,16 +20,16 @@
                         {
                             $datas["code"]  = 200;
 
-                            $datas['entite'][]=$resultat;
+                            $datas['processus'][]=$resultat;
                         }
                 }
             else
                 {
                     $datas["code"]  = 400;
         
-                    $datas['token'][]="Ressource not found";
+                    $datas['processus'][]="Ressource not found";
                 }
-                
+                 
             echo json_encode($datas);
         }
 
