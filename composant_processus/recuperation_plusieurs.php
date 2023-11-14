@@ -3,7 +3,7 @@
     try {
         $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
 
-        $stmt = $dbh->prepare( "SELECT composant_processus.id, composant_processus.activite, composant_processus.lien_code, composant_processus.descriptions, composant_processus.processus_id, processus.nom AS processus_nom FROM `composant_processus` INNER JOIN processus ON composant_processus.processus_id=processus.id ");
+        $stmt = $dbh->prepare( "SELECT composant_processus.id, composant_processus.activite, composant_processus.lien_code, composant_processus.descriptions, composant_processus.processus_id, processus.nom AS processus_nom FROM `composant_processus` INNER JOIN processus ON composant_processus.processus_id=processus.id");
 
         $stmt->execute();
 
