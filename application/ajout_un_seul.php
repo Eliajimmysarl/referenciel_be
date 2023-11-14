@@ -57,7 +57,6 @@
 
             $stmt->bindParam(12, $heureUpdate);
 
-
             $stmt->execute();
 
             $last = $dbh->lastInsertId();

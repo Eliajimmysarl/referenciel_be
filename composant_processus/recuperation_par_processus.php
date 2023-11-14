@@ -1,5 +1,7 @@
 <?php
 
+   $processusId=$json_decode->processus_id;
+
    try
       {
          $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
