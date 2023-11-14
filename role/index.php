@@ -86,7 +86,7 @@
 
                     $acteurId=$json_decode->acteur_id;
 
-                    if((isSet($uniteOrganisationId)) AND (isSet($acteurId)))
+                    if((isSet($acteurId)) AND (isSet($applicationId)))  
                         {
                              require_once("recuperation_avec_jointure.php");
                         }
