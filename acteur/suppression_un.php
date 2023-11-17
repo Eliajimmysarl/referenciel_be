@@ -13,7 +13,7 @@
             $stmt = $dbh->prepare("SELECT *FROM acteur  ORDER BY id");
                     
             $stmt->execute();
-                    
+                      
             $datas = array();
                     
                     while($resultat=$stmt->fetch(PDO::FETCH_ASSOC)) 

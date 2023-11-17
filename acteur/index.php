@@ -81,7 +81,7 @@
             else if($methode=='GET')
                 {
                     $applicationId=$json_decode->application_id;
-
+   
                     $uniteOrganisationId=$json_decode->unite_organisation_id;
 
                      if(isSet($applicationId))

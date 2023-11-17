@@ -9,7 +9,7 @@
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             
             $stmt->execute();
-            
+              
             $datas = array();
 
             $nombreLigne = $stmt->rowCount();
