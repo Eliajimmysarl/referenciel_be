@@ -53,59 +53,38 @@
             $last = $dbh->lastInsertId();
 
             if($last==0)
-                {
-                    $data["code"]  = 400;
-                    $data["code"]  = 201;
+            {
+                $data["code"]  = 400;
 
-                    $data["id"]  = "$last";
+                $data["message"]  = "Ressource not created";
+            }
+        else
+            {
+                $data["code"]  = 201;
 
-                    $data["application_id"]  = "$application_id";
+                $data["id"]  = "$last";
 
-                    $data["entite_id"]  = "$entite_id";
+                $data["application_id"]  = "$application_id";
 
-                    $data["composant_id"]  = "$composant_id";
+                $data["entite_id"]  = "$entite_id";
 
-                    $data["methode"]  = "$methode";
+                $data["composant_id"]  = "$composant_id";
 
-                    $data["uri"]  = "$uri";
+                $data["methode"]  = "$methode";
 
-                    $data["date_creation"]  = "$date_creation";
+                $data["uri"]  = "$uri";
 
-                    $data["date_update"]  = "$date_update";
+                $data["date_creation"]  = "$date_creation";
 
-                    $data["heure_creation"]  = "$heure_creation";
+                $data["date_update"]  = "$date_update";
 
-                    $data["heure_update"]  = "$heure_update";
+                $data["heure_creation"]  = "$heure_creation";
 
-                    $data["message"]  = "Ressource not created";
-                }
-            else
-                {
-                    $data["code"]  = 201;
+                $data["heure_update"]  = "$heure_update";
 
-                    $data["id"]  = "$last";
-
-                    $data["application_id"]  = "$application_id";
-
-                    $data["entite_id"]  = "$entite_id";
-
-                    $data["composant_id"]  = "$composant_id";
-
-                    $data["methode"]  = "$methode";
-
-                    $data["uri"]  = "$uri";
-
-                    $data["date_creation"]  = "$date_creation";
-
-                    $data["date_update"]  = "$date_update";
-
-                    $data["heure_creation"]  = "$heure_creation";
-
-                    $data["heure_update"]  = "$heure_update";
-
-
-                    $data["reponse"]  = "Le test $application_id $entite_id avec l'id $id est cree";  
-                }
+                $data["reponse"]  = "Le test $application_id $entite_id avec l'id $id est cree";  
+                
+            }
             
             echo json_encode( $data );
         
