@@ -4,7 +4,7 @@
         {
             $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
             
-            $stmt = $dbh->prepare("SELECT interaction_entite.id, interaction_entite.composant_entite_id, interaction_entite.entite_id, interaction_entite.descriptions, composant.nom AS composant_nom, entite.nom AS entite_nom FROM `interaction_entite` INNER JOIN composant ON interaction_entite.composant_entite_id=composant.id INNER JOIN entite ON interaction_entite.entite_id=entite.id WHERE interaction_entite.id = :id");
+            $stmt = $dbh->prepare("SELECT interaction_entite.id, interaction_entite.composant_entite_id, interaction_entite.entite_id, interaction_entite.model, interaction_entite.view, interaction_entite.interface, interaction_entite.services, interaction_entite.descriptions, composant.nom AS composant_nom, entite.nom AS entite_nom FROM `interaction_entite` INNER JOIN composant ON interaction_entite.composant_entite_id=composant.id INNER JOIN entite ON interaction_entite.entite_id=entite.id WHERE interaction_entite.id = :id");
            
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             
