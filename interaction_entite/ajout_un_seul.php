@@ -9,6 +9,14 @@
 
     $entiteId=$json_decode->entite_id; 
 
+    $model=$json_decode->model; 
+
+    $view=$json_decode->view; 
+
+    $interface=$json_decode->interface; 
+
+    $services=$json_decode->services; 
+
     $descriptions=$json_decode->descriptions; 
     
     $dateCreation = date("Y-m-d");
@@ -16,27 +24,35 @@
     $dateUpdate = date("Y-m-d");
     
     $heureCreation = date("H:i:s");
-
+   
     $heureUpdate = date("H:i:s");    
 
     try {
             $dbh = new PDO('mysql:host=localhost;dbname='.$db_referentiel, $user, $pass);
 
-            $stmt = $dbh->prepare("INSERT INTO interaction_entite ( composant_entite_id, entite_id, descriptions, date_creation, date_update, heure_creation, heure_update) VALUES (?,?,?,?,?,?,?)");
+            $stmt = $dbh->prepare("INSERT INTO interaction_entite ( composant_entite_id, entite_id, model, view, interface, services, descriptions, date_creation, date_update, heure_creation, heure_update) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
 
             $stmt->bindParam(1, $composantEntiteId);
 
             $stmt->bindParam(2, $entiteId);
 
-            $stmt->bindParam(3, $descriptions);
+            $stmt->bindParam(3, $model);
 
-            $stmt->bindParam(4, $dateCreation);
+            $stmt->bindParam(4, $view);
 
-            $stmt->bindParam(5, $dateUpdate);
+            $stmt->bindParam(5, $interface);
 
-            $stmt->bindParam(6, $heureCreation);
+            $stmt->bindParam(6, $services);
 
-            $stmt->bindParam(7, $heureUpdate);
+            $stmt->bindParam(7, $descriptions);
+
+            $stmt->bindParam(8, $dateCreation);
+
+            $stmt->bindParam(9, $dateUpdate);
+
+            $stmt->bindParam(10, $heureCreation);
+
+            $stmt->bindParam(11, $heureUpdate);
 
             $stmt->execute();
 
@@ -57,6 +73,14 @@
                     $data["composant_entite_id"]  = "$composantEntiteId";
 
                     $data["entite_id"]  = "$entiteId";
+
+                    $data["model"]  = "$model";
+
+                    $data["view"]  = "$view";
+
+                    $data["interface"]  = "$interface";
+
+                    $data["services"]  = "$services";
 
                     $data["descriptions"]  = "$descriptions";
 
